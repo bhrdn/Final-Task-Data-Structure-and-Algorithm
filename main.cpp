@@ -38,6 +38,7 @@ int main(int argc, char const *argv[])
 	listChild LC;
 	addrChild AC;
 
+	createList(LC);
 	AC = alokasi("Daerah A");
 	insertFirst(LC, AC);
 	
