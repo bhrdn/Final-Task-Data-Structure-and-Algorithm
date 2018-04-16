@@ -1,4 +1,5 @@
 #include "init.h"
+
 void showMenu(string option) {
 	int choice; char repeat;
 
@@ -21,9 +22,9 @@ void showMenu(string option) {
 			case 1:
 				do {
 					system("clear");
-					infoParent angkot;
-					cout << "> Plat Nomor: "; cin >> angkot.kode; cout << endl;
-					cout << "> Nama Angkutan: "; cin >> angkot.nama; cout << endl;
+					// infoParent angkot;
+					// cout << "> Plat Nomor: "; cin >> angkot.kode; cout << endl;
+					// cout << "> Nama Angkutan: "; cin >> angkot.nama; cout << endl;
 
 					// TODO FOR ADD (ANGKUTAN)
 
@@ -47,7 +48,7 @@ void showMenu(string option) {
 		} while (choice != 3 and repeat != 'y');
 	} else if (option == "read")
 	{
-		
+
 	} else if (option == "update")
 	{
 

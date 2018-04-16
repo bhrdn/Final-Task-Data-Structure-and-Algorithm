@@ -1,4 +1,3 @@
-#include "init.h"
 #include "child.h"
 
 void createList(listChild &L) {
