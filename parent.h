@@ -15,8 +15,6 @@ struct List_parent {
     address_parent first;
 };
 
-
-/** TIDAK PERLU MODIFIKASI */
 void createList(List_parent &L);
 void insertFirst(List_parent &L, address_parent P);
 void insertAfter(List_parent &L, address_parent Prec, address_parent P);
@@ -25,8 +23,6 @@ void deleteFirst(List_parent &L, address_parent &P);
 void deleteLast(List_parent &L, address_parent &P);
 void deleteAfter(List_parent &L, address_parent Prec, address_parent &P);
 
-
-/** PERLU MODIFIKASI */
 address_parent alokasi(infotype_parent x);
 void dealokasi(address_parent &P);
 address_parent findElm(List_parent L, infotype_parent x);
