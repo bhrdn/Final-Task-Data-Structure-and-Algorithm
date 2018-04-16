@@ -1,33 +1,27 @@
 #include "init.h"
-#define next(P) P->next
-#define prev(P) P->prev
-#define first(L) L.first
-#define last(L) L.last
-#define info(P) P->info
 
-typedef string infotype_child;
-typedef struct elmlist_child *address_child;
+typedef struct elmChild *addrChild;
 
-struct elmlist_child{
-    infotype_child info;
-    address_child next;
-    address_child prev;
+struct elmChild{
+    string info;
+    addrChild next;
+    addrChild prev;
 };
 
-struct List_child{
-    address_child first;
-    address_child last;
+struct listChild{
+    addrChild first;
+    addrChild last;
 };
 
-void createList(List_child &L);
-void insertFirst(List_child &L, address_child P);
-void insertLast(List_child &L, address_child P);
-void insertAfter(address_child Prec, address_child P);
-void deleteFirst(List_child &L, address_child &P);
-void deleteLast(List_child &L, address_child &P);
-void deleteAfter(address_child Prec, address_child &P);
+void createList(listChild &L);
+void insertFirst(listChild &L, addrChild P);
+void insertLast(listChild &L, addrChild P);
+void insertAfter(addrChild Prec, addrChild P);
+void deleteFirst(listChild &L, addrChild &P);
+void deleteLast(listChild &L, addrChild &P);
+void deleteAfter(addrChild Prec, addrChild &P);
 
-address_child alokasi(infotype_child x);
-void dealokasi(address_child &P);
-address_child findElm(List_child L, infotype_child x);
-void printInfo(List_child L);
+addrChild alokasi(string x);
+void dealokasi(addrChild &P);
+addrChild findElm(listChild L, string x);
+void printInfo(listChild L);

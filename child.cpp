@@ -1,52 +1,53 @@
+#include "init.h"
 #include "child.h"
 
-void createList(List_child &L) {
-    first(L) = NULL;
-    last(L) = NULL;
+void createList(listChild &L) {
+    L.first = NULL;
+    L.last = NULL;
 }
 
-address_child alokasi(infotype_child x) {
-    address_child P = new elmlist_child;
-    info(P) = x;
-    next(P) = NULL;
-    prev(P) = NULL;
+addrChild alokasi(string x) {
+    addrChild P = new elmChild;
+    P->info = x;
+    P->next = NULL;
+    P->prev = NULL;
     return P;
 }
 
-void insertFirst(List_child &L, address_child P) {
-    if(first(L) == NULL) {
-        last(L) = P;
-        first(L) = P;
+void insertFirst(listChild &L, addrChild P) {
+    if(L.first == NULL) {
+        L.last = P;
+        L.first = P;
     } else {
-        next(P) = first(L);
-        prev(first(L)) = P;
-        first(L) = P;
+        P->next = L.first;
+        (L.first)->prev = P;
+        L.first = P;
     }
 }
 
-void printInfo(List_child L) {
-    address_child P = first(L);
-    while(P !=NULL) {
-        cout<<"->"<<info(P)<<endl;
-        P = next(P);
-    }
-}
-
-
-address_child findElm(List_child L, infotype_child x) {
-    address_child P = first(L);
+void printInfo(listChild L) {
+    addrChild P = L.first;
     while(P != NULL) {
-        if(info(P)==x) {
+        cout<< "->" << P->info <<endl;
+        P = P->next;
+    }
+}
+
+
+addrChild findElm(listChild L, string x) {
+    addrChild P = L.first;
+    while(P != NULL) {
+        if(P->info==x) {
             return P;
         }
-        P = next(P);
+        P = P->next;
     }
     return NULL;
 }
 
-void insertAfter(address_child &Prec, address_child P) {
-    prev(next(Prec)) = P;
-    next(P) = next(Prec);
-    prev(P) = Prec;
-    next(Prec) = P;
+void insertAfter(addrChild &Prec, addrChild P) {
+    (Prec->next)->prev = P;
+    P->next = Prec->next;
+    P->prev = Prec;
+    Prec->next = P;
 }

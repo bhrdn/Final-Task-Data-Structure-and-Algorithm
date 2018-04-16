@@ -1,29 +1,31 @@
 #include "init.h"
-#define first(L) L.first
-#define next(P) P->next
-#define info(P) P->info
 
-typedef int infotype_parent;
-typedef struct elmlist_parent *address_parent;
+typedef struct elmParent *addrParent;
 
-struct elmlist_parent {
-    infotype_parent info;
-    address_parent next;
+struct infoParent
+{
+	string kode;
+	string nama;
 };
 
-struct List_parent {
-    address_parent first;
+struct elmParent {
+    infoParent info;
+    addrParent next;
 };
 
-void createList(List_parent &L);
-void insertFirst(List_parent &L, address_parent P);
-void insertAfter(List_parent &L, address_parent Prec, address_parent P);
-void insertLast(List_parent &L, address_parent P);
-void deleteFirst(List_parent &L, address_parent &P);
-void deleteLast(List_parent &L, address_parent &P);
-void deleteAfter(List_parent &L, address_parent Prec, address_parent &P);
+struct listParent {
+    addrParent first;
+};
 
-address_parent alokasi(infotype_parent x);
-void dealokasi(address_parent &P);
-address_parent findElm(List_parent L, infotype_parent x);
-void printInfo(List_parent L);
+void createList(listParent &L);
+void insertFirst(listParent &L, addrParent P);
+void insertAfter(listParent &L, addrParent Prec, addrParent P);
+void insertLast(listParent &L, addrParent P);
+void deleteFirst(listParent &L, addrParent &P);
+void deleteLast(listParent &L, addrParent &P);
+void deleteAfter(listParent &L, addrParent Prec, addrParent &P);
+
+addrParent alokasi(infoParent x);
+void dealokasi(addrParent &P);
+addrParent findElm(listParent L, infoParent x);
+void printInfo(listParent L);
