@@ -2,6 +2,7 @@
 
 int main(int argc, char const *argv[])
 {
+<<<<<<< HEAD
 	int choice;
 	do
 	{
@@ -15,6 +16,19 @@ int main(int argc, char const *argv[])
 		     << " 5. Exit" << endl
 		     << "\n[*] Enter your choice and press <enter>: ";
 		cin >> choice;
+=======
+
+	// nambahi conto tok
+
+	// do
+	// {
+	// 	showMenu();
+	// 	switch (choice)
+	// 	{
+	// 		case 1:
+	// 			showMenu('create');
+	// 			break;
+>>>>>>> 4820485d6c8b44906211a1cd39b91926e4861aae
 
 		switch (choice)
 		{
@@ -37,10 +51,18 @@ int main(int argc, char const *argv[])
 		case 5:
 			break;
 
+<<<<<<< HEAD
 		default:
 			cout << "[x] Empty menu.." << endl;
 			break;
 		}
 	} while (choice != 5);
+=======
+	createList(LC);
+	AC = alokasi("Daerah A");
+	insertFirst(LC, AC);
+	
+	printInfo(LC);
+>>>>>>> 4820485d6c8b44906211a1cd39b91926e4861aae
 	return 0;
 }
