@@ -7,7 +7,6 @@
 * **Fungsionalitas:** 
 	* Penambahan data alat angkutan.
 	* Penambahan data daerah.
-
 	* Penentuan relasi alat angkutan dan daerah (dan sebalikknya).
 	* Menghapus data alat angkutan tertentu.
 	* Manghapus data daerah tertentu.
