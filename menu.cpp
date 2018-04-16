@@ -13,7 +13,8 @@ void showMenu(string option) {
 			cout << endl
 			     << " 1. Add angkutan" << endl
 			     << " 2. Add daerah" << endl
-			     << " 3. Back to dashboard menu" << endl
+			     << " 3. Add relasi"
+			     << " 4. Back to dashboard menu" << endl
 			     << "\n[*] Enter your choice and press <enter>: ";
 			cin >> choice;
 
@@ -22,12 +23,12 @@ void showMenu(string option) {
 			case 1:
 				do {
 					system("clear");
-					// infoParent angkot;
-					// cout << "> Plat Nomor: "; cin >> angkot.kode; cout << endl;
-					// cout << "> Nama Angkutan: "; cin >> angkot.nama; cout << endl;
+					cout << "> Plat Nomor: " << endl;
+					cout << "> Nama Angkutan: " << endl;
 
 					// TODO FOR ADD (ANGKUTAN)
-
+					// 1. insertParent
+					
 					cout << "[*] Add datas, again? [y/t]: "; cin >> repeat;
 				} while (repeat != 't');
 
@@ -40,12 +41,28 @@ void showMenu(string option) {
 					cout << "> Nama Daerah: "; cin >> daerah; cout << endl;
 
 					// TODO FOR ADD (DAERAH)
+					// 1. insertChild
+
+					cout << "[*] Add datas, again? [y/t]: "; cin >> repeat;
+				} while (repeat != 't');
+				break;
+
+			case 3:
+				do {
+					system("clear");
+					string daerah;
+					cout << "> Nama Angkutan: " << endl;
+					cout << "> Nama Daerah: " << endl;
+
+					// TODO FOR ADD RELATION
+					// 1. findAddr
+					// 2. insertRelation
 
 					cout << "[*] Add datas, again? [y/t]: "; cin >> repeat;
 				} while (repeat != 't');
 				break;
 			}
-		} while (choice != 3 and repeat != 'y');
+		} while (choice != 4);
 	} else if (option == "read")
 	{
 
