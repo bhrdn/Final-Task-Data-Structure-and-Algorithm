@@ -1,47 +1,61 @@
 #include "init.h"
+void showMenu(string option) {
+	int choice; char repeat;
 
-// void showMenu() {
-// 	cout << endl
-// 	     << " 1. Penambahan data alat angkutan." << endl
-// 	     << " 2. Penambahan data daerah." << endl
-// 	     << " 3. Penentuan relasi alat angkutan dan daerah (dan sebalikknya)." << endl
-// 	     << " 4. Menghapus data alat angkutan tertentu." << endl
-// 	     << " 5. Manghapus data daerah tertentu." << endl
-// 	     << " 6. Menampilkan data keseluruhan alat angkutan beserta daerah yang bisa dikujunginya." << endl
-// 	     << " 7. Menampilkan data daerah yang bisa dilaui oleh alat angkutan tertentu." << endl
-// 	     << " 8. Menampilkan data alat angkutan yang bisa mengunjungi suatu daerah tertentu." << endl
-// 	     << " 9. Menampilkan data daerah yang paling mudah dan yang paling sulit sarana transportasinya." << endl
-// 	     << " \n[*] Enter your choice and press <enter>: ";
-// 	cin >> choice;
-// }
+	if (option == "create")
+	{
+		system("clear");
+		do
+		{
+			system("clear");
+			cout << "=== CREATE DATAS ===" << endl;
+			cout << endl
+			     << " 1. Add angkutan" << endl
+			     << " 2. Add daerah" << endl
+			     << " 3. Back to dashboard menu" << endl
+			     << "\n[*] Enter your choice and press <enter>: ";
+			cin >> choice;
 
-// void showMenu(string x) {
-// 	switch (x) {
-// 	case 'create':
-// 		break;
+			switch (choice)
+			{
+			case 1:
+				do {
+					system("clear");
+					infoParent angkot;
+					cout << "> Plat Nomor: "; cin >> angkot.kode; cout << endl;
+					cout << "> Nama Angkutan: "; cin >> angkot.nama; cout << endl;
 
-// 	case 'read':
-// 		break;
+					// TODO FOR ADD (ANGKUTAN)
 
-// 	case 'update':
-// 		break;
+					cout << "[*] Add datas, again? [y/t]: "; cin >> repeat;
+				} while (repeat != 't');
 
-// 	case 'delete':
-// 		break;
+				break;
 
-// 	default:
-// 		cout << "=== DATA ALAT TRANSPORT ===" << endl;
-// 		cout << endl
-// 		     << " 1. Create" << endl
-// 		     << " 2. Read" << endl
-// 		     << " 3. Update" << endl
-// 		     << " 4. Delete" << endl
-// 		     << " 5. Exit" << endl
-// 		     << "\n[*] Enter your choice and press <enter>: ";
-// 		cin >> choice;
-// 		break;
-// 	}
-// }
+			case 2:
+				do {
+					system("clear");
+					string daerah;
+					cout << "> Nama Daerah: "; cin >> daerah; cout << endl;
+
+					// TODO FOR ADD (DAERAH)
+
+					cout << "[*] Add datas, again? [y/t]: "; cin >> repeat;
+				} while (repeat != 't');
+				break;
+			}
+		} while (choice != 3 and repeat != 'y');
+	} else if (option == "read")
+	{
+		
+	} else if (option == "update")
+	{
+
+	} else if (option == "delete")
+	{
+
+	}
+}
 
 void addDatas(string x) {
 	// TODO
