@@ -7,6 +7,8 @@ int main(int argc, char const *argv[])
 	createList(daftarAngkutan);
 	listChild daftarDaerah;
 	createList(daftarDaerah);
+	listRel Relation;
+	createList(Relation);
 	
 	int choice;
 	do
@@ -25,19 +27,19 @@ int main(int argc, char const *argv[])
 		switch (choice)
 		{
 		case 1:
-			showMenu("create", daftarAngkutan, daftarDaerah);
+			showMenu("create", daftarAngkutan, daftarDaerah, Relation);
 			break;
 
 		case 2:
-			showMenu("read", daftarAngkutan, daftarDaerah);
+			showMenu("read", daftarAngkutan, daftarDaerah, Relation);
 			break;
 
 		case 3:
-			showMenu("update", daftarAngkutan, daftarDaerah);
+			showMenu("update", daftarAngkutan, daftarDaerah, Relation);
 			break;
 
 		case 4:
-			showMenu("delete", daftarAngkutan, daftarDaerah);
+			showMenu("delete", daftarAngkutan, daftarDaerah, Relation);
 			break;
 		}
 	} while (choice != 5);

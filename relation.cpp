@@ -1,44 +1,43 @@
-#include "init.h"
 #include "relation.h"
 
-void createList(List_relasi &L) {
-    first(L) = NULL;
+void createList(listRel &L) {
+    L.first = NULL;
 }
 
-address_relasi alokasi(address_parent P, address_child C) {
-    address_relasi Q = new elmlist_relasi;
-    child(Q) = C;
-    parent(Q) = P;
-    next(Q) = NULL;
+addrRel allocate(addrParent P, addrChild C) {
+    addrRel Q = new elmRel;
+    Q->child = C;
+    Q->parent = P;
+    Q->next = NULL;
     return Q;
 }
 
-void insertFirst(List_relasi &L, address_relasi P) {
-    next(P) = first(L);
-    first(L) = P;
+void insertFirst(listRel &L, addrRel P) {
+    P->next = L.first;
+    L.first = P;
 }
 
-void printInfo(List_relasi L) {
-    address_relasi P = first(L);
+void printInfo(listRel L) {
+    addrRel P = L.first;
     while(P !=NULL) {
-        cout<<info(parent(P))<<"->"<<info(child(P))<<endl;
-        P = next(P);
+        cout<< (P->parent)->info.kode << " -> " << (P->child)->info <<endl;
+        P = P->next;
     }
 }
 
 
-address_relasi findElm(List_relasi L, address_parent P, address_child C) {
-    address_relasi Q = first(L);
+addrRel findElm(listRel L, addrParent P, addrChild C) {
+    addrRel Q = L.first;
     while(Q != NULL) {
-        if(parent(Q)==P && child(Q)== C) {
+        if(Q->parent == P && Q->child == C) {
             return Q;
         }
-        Q = next(Q);
+        Q = Q->next;
     }
     return NULL;
 }
 
-void insertAfter(address_relasi &Prec, address_relasi P) {
-    next(P) = next(Prec);
-    next(Prec) = P;
+void insertAfter(addrRel &Prec, addrRel P) {
+    P->next = Prec->next;
+    Prec->next = P;
 }

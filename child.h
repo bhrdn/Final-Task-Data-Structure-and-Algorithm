@@ -2,15 +2,15 @@
 
 typedef struct elmChild *addrChild;
 
-struct elmChild{
-    string info;
-    addrChild next;
-    addrChild prev;
+struct elmChild {
+	string info;
+	addrChild next;
+	addrChild prev;
 };
 
-struct listChild{
-    addrChild first;
-    addrChild last;
+struct listChild {
+	addrChild first;
+	addrChild last;
 };
 
 addrChild allocate(string x);

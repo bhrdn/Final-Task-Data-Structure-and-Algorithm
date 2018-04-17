@@ -1,25 +1,22 @@
 #include "menu.h"
 
-void addDatas(string x, listParent &LP, listChild &LC) {
+void addDatas(string x, listParent &LP, listChild &LC, listRel &LR) {
+	infoParent angkutan; string daerah;
 	if (x == "angkutan")
 	{
-		infoParent angkutan;
-
 		do {
 			system("clear");
 			cin.ignore();
-			cout << "> Plat Nomor: ";getline(cin, angkutan.kode);
-			cout << "> Nama Angkutan: ";getline(cin, angkutan.nama);
+			cout << "> Plat Nomor: "; getline(cin, angkutan.kode);
+			cout << "> Nama Angkutan: "; getline(cin, angkutan.nama);
 			cout << endl;
 
 			addrParent P = allocate(angkutan);
 			insertFirst(LP, P);
-			
+
 			cout << "[*] Add datas, again? [y/t]: "; cin >> repeat;
 		} while (repeat != 't');
 	} else if (x == "daerah") {
-		string daerah;
-
 		do {
 			system("clear");
 			cin.ignore();
@@ -34,22 +31,26 @@ void addDatas(string x, listParent &LP, listChild &LC) {
 	} else if (x == "relasi") {
 		do {
 			system("clear");
-			string daerah;
-			cout << "> Nama Angkutan: " << endl;
-			cout << "> Nama Daerah: " << endl;
+			cout << "> Nama Angkutan: "; cin >> angkutan.nama;
+			cout << "> Nama Daerah: "; cin >> daerah;
 
-			
-			
-			// TODO FOR ADD RELATION
-			// 1. findAddr
-			// 2. insertRelation
+			addrParent srcParent = findElm(LP, angkutan.nama);
+			addrChild srcChild = findElm(LC, daerah);
+
+			if (srcParent != NULL && srcChild != NULL)
+			{
+				addrRel datas = allocate(srcParent, srcChild);
+				insertFirst(LR, datas);
+
+				printInfo(LR);
+			}
 
 			cout << "[*] Add datas, again? [y/t]: "; cin >> repeat;
 		} while (repeat != 't');
 	}
 }
 
-void showDatas(string x, listParent &LP, listChild &LC) {
+void showDatas(string x, listParent &LP, listChild &LC, listRel &LR) {
 	if (x == "all") {
 		system("clear");
 		cout << "[*] Data Angkutan" << endl;
@@ -70,7 +71,7 @@ void showDatas(string x, listParent &LP, listChild &LC) {
 	}
 }
 
-void updateDatas(string x, listParent &LP, listChild &LC) {
+void updateDatas(string x, listParent &LP, listChild &LC, listRel &LR) {
 	if (x == "angkutan") {
 
 	} else {
@@ -78,7 +79,7 @@ void updateDatas(string x, listParent &LP, listChild &LC) {
 	}
 }
 
-void deleteDatas(string x, listParent &LP, listChild &LC) {
+void deleteDatas(string x, listParent &LP, listChild &LC, listRel &LR) {
 	if (x == "angkutan") {
 		// 1. find addr parent
 		// 2. find addr relasi
@@ -88,7 +89,7 @@ void deleteDatas(string x, listParent &LP, listChild &LC) {
 	}
 }
 
-void showMenu(string x, listParent &LP, listChild &LC) {
+void showMenu(string x, listParent &LP, listChild &LC, listRel &LR) {
 	if (x == "create") {
 		system("clear");
 		do {
@@ -104,15 +105,15 @@ void showMenu(string x, listParent &LP, listChild &LC) {
 
 			switch (choice) {
 			case 1:
-				addDatas("angkutan", LP, LC);
+				addDatas("angkutan", LP, LC, LR);
 				break;
 
 			case 2:
-				addDatas("daerah", LP, LC);
+				addDatas("daerah", LP, LC, LR);
 				break;
 
 			case 3:
-				addDatas("relasi", LP, LC);
+				addDatas("relasi", LP, LC, LR);
 				break;
 			}
 		} while (choice != 4);
@@ -132,19 +133,19 @@ void showMenu(string x, listParent &LP, listChild &LC) {
 
 			switch (choice) {
 			case 1:
-				showDatas("all", LP, LC);
+				showDatas("all", LP, LC, LR);
 				break;
 
 			case 2:
-				showDatas("daerah", LP, LC);
+				showDatas("daerah", LP, LC, LR);
 				break;
 
 			case 3:
-				showDatas("angkutan", LP, LC);
+				showDatas("angkutan", LP, LC, LR);
 				break;
 
 			case 4:
-				showDatas("sorting", LP, LC);
+				showDatas("sorting", LP, LC, LR);
 				break;
 			}
 		} while (choice != 5);
@@ -163,11 +164,11 @@ void showMenu(string x, listParent &LP, listChild &LC) {
 
 			switch (choice) {
 			case 1:
-				updateDatas("angkutan", LP, LC);
+				updateDatas("angkutan", LP, LC, LR);
 				break;
 
 			case 2:
-				updateDatas("daerah", LP, LC);
+				updateDatas("daerah", LP, LC, LR);
 				break;
 			}
 		} while (choice != 3);
@@ -186,11 +187,11 @@ void showMenu(string x, listParent &LP, listChild &LC) {
 
 			switch (choice) {
 			case 1:
-				deleteDatas("angkutan", LP, LC);
+				deleteDatas("angkutan", LP, LC, LR);
 				break;
 
 			case 2:
-				deleteDatas("daerah", LP, LC);
+				deleteDatas("daerah", LP, LC, LR);
 				break;
 			}
 		} while (choice != 3);
