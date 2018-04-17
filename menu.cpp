@@ -44,9 +44,8 @@ void addDatas(string x, listParent &LP, listChild &LC, listRel &LR) {
 
 			if (srcParent != NULL && srcChild != NULL)
 			{
-			// 	addrRel datas = allocate(srcParent, srcChild);
-			// 	// insertLast(LR, datas);
-			// 	insertLast(LR, datas);
+				addrRel datas = allocate(srcParent, srcChild);
+				insertLast(LR, datas);
 			} else 
 			{
 				cout << ">> Data Not Found" << endl;
