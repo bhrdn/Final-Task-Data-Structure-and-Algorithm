@@ -13,15 +13,19 @@ struct listChild{
     addrChild last;
 };
 
+addrChild allocate(string x);
+void deallocate(addrChild &P);
 void createList(listChild &L);
+
+// INSERT
 void insertFirst(listChild &L, addrChild P);
 void insertLast(listChild &L, addrChild P);
 void insertAfter(addrChild Prec, addrChild P);
+
+// DELETE
 void deleteFirst(listChild &L, addrChild &P);
 void deleteLast(listChild &L, addrChild &P);
-void deleteAfter(addrChild Prec, addrChild &P);
+void deleteAfter(listChild &L, addrChild Prec, addrChild &P);
 
-addrChild alokasi(string x);
-void dealokasi(addrChild &P);
-addrChild findElm(listChild L, string x);
 void printInfo(listChild L);
+addrChild findElm(listChild L, string x);
