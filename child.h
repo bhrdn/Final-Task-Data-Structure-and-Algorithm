@@ -23,8 +23,8 @@ void insertLast(listChild &L, addrChild P);
 void insertAfter(addrChild Prec, addrChild P);
 
 // DELETE
-void deleteFirst(listChild &L, addrChild &P);
-void deleteLast(listChild &L, addrChild &P);
+void deleteFirst(listChild &L);
+void deleteLast(listChild &L);
 void deleteAfter(listChild &L, addrChild Prec, addrChild &P);
 
 void printInfo(listChild L);

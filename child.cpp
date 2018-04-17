@@ -18,25 +18,27 @@ void createList(listChild &L) {
 }
 
 void insertFirst(listChild &L, addrChild P) {
-    if (L.first == NULL) {
-        L.last = P;
+    if (L.first == NULL && L.last == NULL) {
         L.first = P;
-    } else {
+        L.last = P;
+    }
+    else {
         P->next = L.first;
-        (L.first)->prev = P;
+        L.first->prev = P;
         L.first = P;
     }
 }
 
 void insertLast(listChild &L, addrChild P) {
     if (L.first == NULL && L.last == NULL) {
-        insertFirst(L, P);
+        L.first = P;
+        L.last = P;
     }
     else {
         P->prev = L.last;
-        (L.last)->next = P;
+        L.last->next = P;
         L.last = P;
-    }
+    };
 }
 
 void insertAfter(addrChild Prec, addrChild P) {
@@ -46,29 +48,32 @@ void insertAfter(addrChild Prec, addrChild P) {
     Prec->next = P;
 }
 
-void deleteFirst(listChild &L, addrChild &P) {
-    if (L.first != NULL) {
-        P = L.first;
-        if (L.first == L.last) {
-            L.first = NULL;
-            L.last = NULL;
-            deallocate(P);
-        }
-        else {
-            L.first = P->next;
-            P->next = NULL;
-            (L.first)->prev = NULL;
-            deallocate(P);
-        }
+void deleteFirst(listChild &L) {
+    if (L.first == NULL && L.last == NULL) {
+        cout << "Empty" << endl;
+    } else if (L.first == L.last) {
+        L.first = NULL;
+        L.last = NULL;
+    } else {
+        addrChild P = L.first;
+        L.first = P->next;
+        P->next = NULL;
+        L.first->prev = NULL;
     }
 }
 
-void deleteLast(listChild &L, addrChild &P) {
-    P = L.last;
-    L.last = P->prev;
-    (L.last)->next = NULL;
-    P->prev = NULL;
-    deallocate(P);
+void deleteLast(listChild &L) {
+    if (L.first == NULL && L.last == NULL) {
+        cout << "Empty" << endl;
+    } else if (L.first == L.last) {
+        L.first = NULL;
+        L.last = NULL;
+    } else {
+        addrChild P = L.last;
+        L.last = P->prev;
+        P->prev = NULL;
+        L.last->next = NULL;
+    }
 }
 
 void deleteAfter(listChild &L, addrChild Prec, addrChild &P) {
@@ -88,14 +93,12 @@ void printInfo(listChild L) {
 }
 
 addrChild findElm(listChild L, string x) {
-    addrChild P = L.first;
-    while (P != NULL) {
-        if (P->info == x) {
-            return P;
-        }
-        P = P->next;
-    }
-    return NULL;
+    addrChild Q = L.first;
+    while (Q != NULL && Q->info != x) {
+        Q = Q->next;
+    };
+
+    return ((Q == NULL) ? NULL : Q);
 }
 
 

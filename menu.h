@@ -4,6 +4,7 @@
 #include "relation.cpp"
 
 int choice; char repeat;
+infoParent angkutan; string daerah;
 
 void addDatas(string x, listParent &LP, listChild &LC, listRel &LR);
 void showDatas(string x, listParent &LP, listChild &LC, listRel &LR);

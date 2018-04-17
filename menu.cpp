@@ -1,7 +1,6 @@
 #include "menu.h"
 
 void addDatas(string x, listParent &LP, listChild &LC, listRel &LR) {
-	infoParent angkutan; string daerah;
 	if (x == "angkutan")
 	{
 		do {
@@ -31,8 +30,14 @@ void addDatas(string x, listParent &LP, listChild &LC, listRel &LR) {
 	} else if (x == "relasi") {
 		do {
 			system("clear");
-			cout << "> Nama Angkutan: "; cin >> angkutan.nama;
-			cout << "> Nama Daerah: "; cin >> daerah;
+			printInfo(LP);
+			cout << "============================" << endl;
+			printInfo(LC);
+			cout << "============================" << endl;
+			
+			cin.ignore();
+			cout << "> Nama Angkutan: "; getline(cin, angkutan.kode);
+			cout << "> Nama Daerah: "; getline(cin, daerah);
 
 			addrParent srcParent = findElm(LP, angkutan.nama);
 			addrChild srcChild = findElm(LC, daerah);
@@ -52,20 +57,36 @@ void addDatas(string x, listParent &LP, listChild &LC, listRel &LR) {
 
 void showDatas(string x, listParent &LP, listChild &LC, listRel &LR) {
 	if (x == "all") {
-		system("clear");
 		cout << "[*] Data Angkutan" << endl;
-		printInfo(LP);
-		cout << endl;
+		printInfo(LP); cout << endl;
 
 		cout << "[*] Data Daerah" << endl;
 		printInfo(LC);
+
 		cin.ignore().get();
 	} else if (x == "daerah") {
-		// 1. find angkutan
-		// 2, print daerah
+		cin.ignore();
+		cout << "> Nama Angkutan: "; getline(cin, angkutan.kode);
+		if (findElm(LP, angkutan.kode) == NULL)
+		{
+			cout << "[*] Empty datas.." << endl;
+		} else {
+			addrRel P = LR.first;
+			while (P != NULL) {
+				if ((P->parent)->info.kode == angkutan.kode)
+				{
+					cout << "-> " << (P->child)->info << endl;
+				}
+				P = P->next;
+			}
+		}
+
+		cin.ignore().get();
 	} else if (x == "angkutan") {
 		// 1. find daerah
 		// 2. print angkutan
+		cin.ignore();
+		cout << "> Nama Daerah: "; getline(cin, daerah);
 	} else if (x == "sorting") {
 		// print daerah dengan angkutan terbanyak - sedikit (DESC)
 	}
