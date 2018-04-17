@@ -66,28 +66,50 @@ void showDatas(string x, listParent &LP, listChild &LC, listRel &LR) {
 
 		cin.ignore().get();
 	} else if (x == "daerah") {
+		// Masih Error Disini
 		cin.ignore();
-		cout << "> Nama Angkutan: "; getline(cin, angkutan.kode);
+		cout << "> Nama Daerah: "; getline(cin, daerah);
+		if(findElm(LC, daerah) == NULL)
+		{
+			cout << "[*] Empty datas.." << endl;			
+		} else {
+			addrRel P = LR.first;
+			if(P->next == LR.first) {
+				cout << "-> " << (P->parent)->info.kode << " | " << (P->parent)->info.nama << endl;
+			} else {
+				while (P != LR.first) {
+					if ((P->child)->info == daerah)
+					{
+						cout << "-> " << (P->parent)->info.kode << " " << (P->parent)->info.nama << endl;
+					}
+					P = P->next;
+				}
+			}
+		}
+
+	} else if (x == "angkutan") {
+		cin.ignore();
+		cout << "> Kode Angkutan: "; getline(cin, angkutan.kode);
 		if (findElm(LP, angkutan.kode) == NULL)
 		{
 			cout << "[*] Empty datas.." << endl;
 		} else {
 			addrRel P = LR.first;
-			while (P != NULL) {
-				if ((P->parent)->info.kode == angkutan.kode)
-				{
-					cout << "-> " << (P->child)->info << endl;
-				}
-				P = P->next;
+			if(P->next == LR.first) {
+				cout << "-> " << (P->child)->info << endl;
+			} else {
+				while (P != LR.first) {
+					if ((P->parent)->info.kode == angkutan.kode)
+					{
+						cout << "-> " << (P->child)->info << endl;
+					}
+					P = P->next;
+				}	
 			}
 		}
 
 		cin.ignore().get();
-	} else if (x == "angkutan") {
-		// 1. find daerah
-		// 2. print angkutan
-		cin.ignore();
-		cout << "> Nama Daerah: "; getline(cin, daerah);
+		
 	} else if (x == "sorting") {
 		// print daerah dengan angkutan terbanyak - sedikit (DESC)
 	}
@@ -194,11 +216,11 @@ void showMenu(string x, listParent &LP, listChild &LC, listRel &LR) {
 				break;
 
 			case 2:
-				showDatas("daerah", LP, LC, LR);
+				showDatas("angkutan", LP, LC, LR);
 				break;
 
 			case 3:
-				showDatas("angkutan", LP, LC, LR);
+				showDatas("daerah", LP, LC, LR);
 				break;
 
 			case 4:
