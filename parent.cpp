@@ -17,17 +17,10 @@ void createList(listParent &L) {
 }
 
 void insertFirst(listParent &L, addrParent P) {
-    addrParent Q;
     if (L.first == NULL) {
         L.first = P;
-        P->next = P;
     } else {
-        Q = L.first;
-        while (Q->next != L.first) {
-            Q = Q->next;
-        }
         P->next = L.first;
-        Q->next = P;
         L.first = P;
     }
 }
@@ -43,8 +36,6 @@ void insertLast(listParent &L, addrParent P) {
         }
 
         Q->next = P;
-        Q = NULL;
-        P = NULL;
     }
 }
 
@@ -55,24 +46,43 @@ void insertAfter(listParent &L, addrParent Prec, addrParent P) {
 
 void deleteFirst(listParent &L, addrParent &P) {
     if (L.first != NULL) {
-        P = L.first;
-        L.first = P->next;
-        deallocate(P);
-        P->next = NULL;
+        if ((L.first)->next == NULL) {
+            P = L.first;
+            L.first = NULL;
+        } else {
+            P = L.first;
+            L.first = (L.first)->next;
+            P->next = NULL;
+        }
     }
+
+    deallocate(P);
 }
 
 void deleteLast(listParent &L, addrParent &P) {
-    addrParent Q = L.first;
-    while (Q->next != P) {
-        Q = Q->next;
+    if (L.first != NULL) {
+        if ((L.first)->next == NULL) {
+            P = L.first;
+            L.first = NULL;
+        }
+        else {
+            addrParent Q = L.first;
+            while ((Q->next)->next != NULL) {
+                Q = Q->next;
+            }
+            P = Q->next;
+            Q->next = NULL;
+        }
     }
-    Q->next = NULL;
+
     deallocate(P);
 }
 
 void deleteAfter(listParent &L, addrParent Prec, addrParent &P) {
+    P = Prec->next;
     Prec->next = P->next;
+    P->next = NULL;
+
     deallocate(P);
 }
 
@@ -82,7 +92,7 @@ void printInfo(listParent L) {
         do {
             cout << "-> " << P->info.kode << " | " << P->info.nama << endl;
             P = P->next;
-        } while ((P) != L.first);
+        } while ((P) != NULL);
     }
 }
 
