@@ -48,7 +48,7 @@ void addDatas(string x, listParent &LP, listChild &LC, listRel &LR) {
 				insertLast(LR, datas);
 			} else 
 			{
-				cout << ">> Data Not Found" << endl;
+				cout << "[*] Empty datas.." << endl;
 			}
 
 			cout << "[*] Add datas, again? [y/t]: "; cin >> repeat;
@@ -69,6 +69,7 @@ void showDatas(string x, listParent &LP, listChild &LC, listRel &LR) {
 		// Masih Error Disini
 		cin.ignore();
 		cout << "> Nama Daerah: "; getline(cin, daerah);
+		
 		if(findElm(LC, daerah) == NULL)
 		{
 			cout << "[*] Empty datas.." << endl;			
@@ -86,6 +87,7 @@ void showDatas(string x, listParent &LP, listChild &LC, listRel &LR) {
 				}
 			}
 		}
+		cin.ignore().get();
 
 	} else if (x == "angkutan") {
 		cin.ignore();
