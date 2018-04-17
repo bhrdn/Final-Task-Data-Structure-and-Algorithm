@@ -1,13 +1,14 @@
-#include "init.h"
-int choice; char repeat;
+#include "menu.h"
 
 void addDatas(string x) {
 	if (x == "angkutan")
 	{
+		infoParent angkutan;
+		
 		do {
 			system("clear");
-			cout << "> Plat Nomor: " << endl;
-			cout << "> Nama Angkutan: " << endl;
+			cout << "> Plat Nomor: "; cin >> angkutan.kode; cout << endl;
+			cout << "> Nama Angkutan: "; cin >> angkutan.nama; cout << endl;
 
 			// TODO FOR ADD (ANGKUTAN)
 			// 1. insertParent
@@ -73,8 +74,8 @@ void deleteDatas(string x) {
 	}
 }
 
-void showMenu(string option) {
-	if (option == "create") {
+void showMenu(string x) {
+	if (x == "create") {
 		system("clear");
 		do {
 			system("clear");
@@ -101,7 +102,7 @@ void showMenu(string option) {
 				break;
 			}
 		} while (choice != 4);
-	} else if (option == "read") {
+	} else if (x == "read") {
 		system("clear");
 		do {
 			system("clear");
@@ -134,7 +135,7 @@ void showMenu(string option) {
 			}
 		} while (choice != 5);
 
-	} else if (option == "update") {
+	} else if (x == "update") {
 		system("clear");
 		do {
 			system("clear");
@@ -157,7 +158,7 @@ void showMenu(string option) {
 			}
 		} while (choice != 3);
 
-	} else if (option == "delete") {
+	} else if (x == "delete") {
 		system("clear");
 		do {
 			system("clear");

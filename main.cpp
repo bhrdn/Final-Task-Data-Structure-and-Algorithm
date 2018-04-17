@@ -33,13 +33,6 @@ int main(int argc, char const *argv[])
 			case 4:
 				showMenu("delete");
 				break;
-
-			case 5:
-				break;
-
-			default:
-				cout << "[x] Empty menu.." << endl;
-				break;
 		}
 	} while (choice != 5);
 	
