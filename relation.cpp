@@ -46,10 +46,12 @@ void insertLast(listRel &L, addrRel P) {
 
 void printInfo(listRel L) {
     addrRel P = L.first;
-    while (P != L.first) {
+    while (P != NULL) {
         cout << (P->parent)->info.kode << " -> " << (P->child)->info << endl;
         P = P->next;
     }
+    // cout << (P->parent)->info.kode << " -> " << (P->child)->info << endl;
+
 }
 
 addrRel findElm(listRel L, addrParent P, addrChild C) {
