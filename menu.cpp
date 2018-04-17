@@ -34,7 +34,7 @@ void addDatas(string x, listParent &LP, listChild &LC, listRel &LR) {
 			cout << "============================" << endl;
 			printInfo(LC);
 			cout << "============================" << endl;
-			
+
 			cin.ignore();
 			cout << "> Nama Angkutan: "; getline(cin, angkutan.kode);
 			cout << "> Nama Daerah: "; getline(cin, daerah);
@@ -94,9 +94,44 @@ void showDatas(string x, listParent &LP, listChild &LC, listRel &LR) {
 
 void updateDatas(string x, listParent &LP, listChild &LC, listRel &LR) {
 	if (x == "angkutan") {
+		do {
+			system("clear");
+			cin.ignore();
+			cout << "> Nama Angkutan: "; getline(cin, angkutan.nama);
+			cout << endl;
 
+			addrParent srcParent = findElm(LP, angkutan.nama);
+
+			if (srcParent != NULL)
+			{
+				system("clear");
+				cout << "> Plat Nomor: "; getline(cin, srcParent->info.kode);
+				cout << "> Nama Angkutan: "; getline(cin, srcParent->info.nama);
+
+				printInfo(LP);
+			}
+
+			cout << "[*] Update datas, again? [y/t]: "; cin >> repeat;
+		} while (repeat != 't');
 	} else {
-		// daerah
+		do {
+			system("clear");
+			cin.ignore();
+			cout << "> Masukkan Nama Daerah: "; getline(cin, daerah);
+			cout << endl;
+
+			addrChild srcChild = findElm(LC, daerah);
+
+			if (srcChild != NULL)
+			{
+				system("clear");
+				cout << "> Nama Daerah: "; getline(cin, srcChild->info);
+
+				printInfo(LC);
+			}
+
+			cout << "[*] Update datas, again? [y/t]: "; cin >> repeat;
+		} while (repeat != 't');
 	}
 }
 
