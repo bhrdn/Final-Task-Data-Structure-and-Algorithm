@@ -1,28 +1,45 @@
 #include "menu.h"
 
 void addDatas(string x) {
+	
+	// List Parent & Child
+	listParent daftarAngkutan;
+	createList(daftarAngkutan);
+	listChild daftarDaerah;
+	createList(daftarDaerah);
+
+
 	if (x == "angkutan")
 	{
 		infoParent angkutan;
-		
+
 		do {
 			system("clear");
-			cout << "> Plat Nomor: "; cin >> angkutan.kode; cout << endl;
-			cout << "> Nama Angkutan: "; cin >> angkutan.nama; cout << endl;
-
+			cin.ignore();
+			cout << "> Plat Nomor: ";getline(cin, angkutan.kode);
+			cout << "> Nama Angkutan: ";getline(cin, angkutan.nama);
+			cout << endl;
 			// TODO FOR ADD (ANGKUTAN)
 			// 1. insertParent
+			addrParent P = alokasi(angkutan);
+			insertFirst(daftarAngkutan, P);
 
 			cout << "[*] Add datas, again? [y/t]: "; cin >> repeat;
 		} while (repeat != 't');
 	} else if (x == "daerah") {
+
+		string daerah;
+
 		do {
 			system("clear");
-			string daerah;
-			cout << "> Nama Daerah: "; cin >> daerah; cout << endl;
+			cin.ignore();
+			cout << "> Nama Daerah: "; getline(cin, daerah);
+			cout << endl;
 
 			// TODO FOR ADD (DAERAH)
 			// 1. insertChild
+			addrChild P = alokasi(daerah);
+			insertFirst(daftarDaerah, P);
 
 			cout << "[*] Add datas, again? [y/t]: "; cin >> repeat;
 		} while (repeat != 't');
