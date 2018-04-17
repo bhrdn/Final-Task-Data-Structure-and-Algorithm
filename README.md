@@ -19,6 +19,6 @@
 
 ## TODO
 * [x] Menu for dashboard program
-* [ ] Procedure addDatas for Angkutan/Daerah
+* [x] Procedure addDatas for Angkutan/Daerah
 * [ ] Procedure removeDatas for Angkutan/Daerah
 * [ ] Procedure showDatas for Angkutan/Daerah
