@@ -1,12 +1,6 @@
 #include "menu.h"
 
 void addDatas(string x) {
-	// List Parent & Child
-	listParent daftarAngkutan;
-	createList(daftarAngkutan);
-	listChild daftarDaerah;
-	createList(daftarDaerah);
-
 	if (x == "angkutan")
 	{
 		infoParent angkutan;
@@ -18,13 +12,12 @@ void addDatas(string x) {
 			cout << "> Nama Angkutan: ";getline(cin, angkutan.nama);
 			cout << endl;
 
-			addrParent P = alokasi(angkutan);
-			insertFirst(daftarAngkutan, P);
-
+			addrParent P = allocate(angkutan);
+			insertFirst(LP, P);
+			
 			cout << "[*] Add datas, again? [y/t]: "; cin >> repeat;
 		} while (repeat != 't');
 	} else if (x == "daerah") {
-
 		string daerah;
 
 		do {
@@ -34,7 +27,7 @@ void addDatas(string x) {
 			cout << endl;
 
 			addrChild P = allocate(daerah);
-			insertLast(daftarDaerah, P);
+			insertLast(LC, P);
 
 			cout << "[*] Add datas, again? [y/t]: "; cin >> repeat;
 		} while (repeat != 't');
@@ -45,6 +38,8 @@ void addDatas(string x) {
 			cout << "> Nama Angkutan: " << endl;
 			cout << "> Nama Daerah: " << endl;
 
+			
+			
 			// TODO FOR ADD RELATION
 			// 1. findAddr
 			// 2. insertRelation
@@ -56,7 +51,10 @@ void addDatas(string x) {
 
 void showDatas(string x) {
 	if (x == "all") {
-		// print all
+		system("clear");
+		printInfo(LP);
+		
+		cin.ignore().get();
 	} else if (x == "daerah") {
 		// 1. find angkutan
 		// 2, print daerah
@@ -86,7 +84,8 @@ void deleteDatas(string x) {
 	}
 }
 
-void showMenu(string x) {
+void showMenu(string x, listParent &y, listChild &z) {
+	LP = y; LC = z;
 	if (x == "create") {
 		system("clear");
 		do {

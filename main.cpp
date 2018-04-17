@@ -2,6 +2,12 @@
 
 int main(int argc, char const *argv[])
 {
+	// List Parent & Child
+	listParent daftarAngkutan;
+	createList(daftarAngkutan);
+	listChild daftarDaerah;
+	createList(daftarDaerah);
+
 	int choice;
 	do
 	{
@@ -18,23 +24,23 @@ int main(int argc, char const *argv[])
 
 		switch (choice)
 		{
-			case 1:
-				showMenu("create");
-				break;
+		case 1:
+			showMenu("create", daftarAngkutan, daftarDaerah);
+			break;
 
-			case 2:
-				showMenu("read");
-				break;
+		case 2:
+			showMenu("read", daftarAngkutan, daftarDaerah);
+			break;
 
-			case 3:
-				showMenu("update");
-				break;
+		case 3:
+			showMenu("update", daftarAngkutan, daftarDaerah);
+			break;
 
-			case 4:
-				showMenu("delete");
-				break;
+		case 4:
+			showMenu("delete", daftarAngkutan, daftarDaerah);
+			break;
 		}
 	} while (choice != 5);
-	
+
 	return 0;
 }
