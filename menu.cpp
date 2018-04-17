@@ -45,7 +45,7 @@ void addDatas(string x, listParent &LP, listChild &LC, listRel &LR) {
 			if (srcParent != NULL && srcChild != NULL)
 			{
 				addrRel datas = allocate(srcParent, srcChild);
-				insertFirst(LR, datas);
+				insertLast(LR, datas);
 
 				printInfo(LR);
 			}

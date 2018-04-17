@@ -1,5 +1,6 @@
 # Final Task Data Structure and Algorithm
 * Habib Bahruddin (1301174412)
+* Husna Assabiila Yassarah (1301174079)
 
 ## Spesifikasi
 * **Judul:** Data Alat Transport

@@ -13,31 +13,44 @@ addrRel allocate(addrParent P, addrChild C) {
 }
 
 void insertFirst(listRel &L, addrRel P) {
-    // P->next = L.first;
-    // L.first = P;
-    addrRel Q;
     if (L.first == NULL) {
         L.first = P;
-        P->next = P;
+        // P->next = P;
+        P->next = L.first;
     } else {
-        Q = L.first;
+        addrRel Q = L.first;
         while (Q->next != L.first) {
             Q = Q->next;
         }
+
         P->next = L.first;
         Q->next = P;
         L.first = P;
     }
 }
 
+void insertLast(listRel &L, addrRel P) {
+    if (L.first == NULL)
+    {
+        insertFirst(L, P);
+    } else {
+        addrRel Q = L.first;
+        while (Q->next != L.first) {
+            Q = Q->next;
+        }
+
+        P->next = L.first;
+        Q->next = P;
+    }
+}
+
 void printInfo(listRel L) {
     addrRel P = L.first;
-    while (P != NULL) {
+    while (P != L.first) {
         cout << (P->parent)->info.kode << " -> " << (P->child)->info << endl;
         P = P->next;
     }
 }
-
 
 addrRel findElm(listRel L, addrParent P, addrChild C) {
     addrRel Q = L.first;
@@ -48,9 +61,4 @@ addrRel findElm(listRel L, addrParent P, addrChild C) {
         Q = Q->next;
     }
     return NULL;
-}
-
-void insertAfter(addrRel &Prec, addrRel P) {
-    P->next = Prec->next;
-    Prec->next = P;
 }
