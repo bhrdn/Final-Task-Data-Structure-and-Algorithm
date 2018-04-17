@@ -80,7 +80,7 @@ void printInfo(listParent L) {
     addrParent P = L.first;
     if (L.first != NULL) {
         do {
-            cout << P->info.kode << " | " << P->info.nama << endl;
+            cout << "-> " << P->info.kode << " | " << P->info.nama << endl;
             P = P->next;
         } while ((P) != L.first);
     }

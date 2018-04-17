@@ -82,7 +82,7 @@ void deleteAfter(listChild &L, addrChild Prec, addrChild &P) {
 void printInfo(listChild L) {
     addrChild P = L.first;
     while (P != NULL) {
-        cout << "->" << P->info << endl;
+        cout << "-> " << P->info << endl;
         P = P->next;
     }
 }

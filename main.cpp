@@ -7,7 +7,7 @@ int main(int argc, char const *argv[])
 	createList(daftarAngkutan);
 	listChild daftarDaerah;
 	createList(daftarDaerah);
-
+	
 	int choice;
 	do
 	{

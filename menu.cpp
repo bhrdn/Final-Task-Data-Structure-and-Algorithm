@@ -1,6 +1,6 @@
 #include "menu.h"
 
-void addDatas(string x) {
+void addDatas(string x, listParent &LP, listChild &LC) {
 	if (x == "angkutan")
 	{
 		infoParent angkutan;
@@ -49,11 +49,15 @@ void addDatas(string x) {
 	}
 }
 
-void showDatas(string x) {
+void showDatas(string x, listParent &LP, listChild &LC) {
 	if (x == "all") {
 		system("clear");
+		cout << "[*] Data Angkutan" << endl;
 		printInfo(LP);
-		
+		cout << endl;
+
+		cout << "[*] Data Daerah" << endl;
+		printInfo(LC);
 		cin.ignore().get();
 	} else if (x == "daerah") {
 		// 1. find angkutan
@@ -66,7 +70,7 @@ void showDatas(string x) {
 	}
 }
 
-void updateDatas(string x) {
+void updateDatas(string x, listParent &LP, listChild &LC) {
 	if (x == "angkutan") {
 
 	} else {
@@ -74,7 +78,7 @@ void updateDatas(string x) {
 	}
 }
 
-void deleteDatas(string x) {
+void deleteDatas(string x, listParent &LP, listChild &LC) {
 	if (x == "angkutan") {
 		// 1. find addr parent
 		// 2. find addr relasi
@@ -84,8 +88,7 @@ void deleteDatas(string x) {
 	}
 }
 
-void showMenu(string x, listParent &y, listChild &z) {
-	LP = y; LC = z;
+void showMenu(string x, listParent &LP, listChild &LC) {
 	if (x == "create") {
 		system("clear");
 		do {
@@ -101,15 +104,15 @@ void showMenu(string x, listParent &y, listChild &z) {
 
 			switch (choice) {
 			case 1:
-				addDatas("angkutan");
+				addDatas("angkutan", LP, LC);
 				break;
 
 			case 2:
-				addDatas("daerah");
+				addDatas("daerah", LP, LC);
 				break;
 
 			case 3:
-				addDatas("relasi");
+				addDatas("relasi", LP, LC);
 				break;
 			}
 		} while (choice != 4);
@@ -129,19 +132,19 @@ void showMenu(string x, listParent &y, listChild &z) {
 
 			switch (choice) {
 			case 1:
-				showDatas("all");
+				showDatas("all", LP, LC);
 				break;
 
 			case 2:
-				showDatas("daerah");
+				showDatas("daerah", LP, LC);
 				break;
 
 			case 3:
-				showDatas("angkutan");
+				showDatas("angkutan", LP, LC);
 				break;
 
 			case 4:
-				showDatas("sorting");
+				showDatas("sorting", LP, LC);
 				break;
 			}
 		} while (choice != 5);
@@ -160,11 +163,11 @@ void showMenu(string x, listParent &y, listChild &z) {
 
 			switch (choice) {
 			case 1:
-				updateDatas("angkutan");
+				updateDatas("angkutan", LP, LC);
 				break;
 
 			case 2:
-				updateDatas("daerah");
+				updateDatas("daerah", LP, LC);
 				break;
 			}
 		} while (choice != 3);
@@ -183,11 +186,11 @@ void showMenu(string x, listParent &y, listChild &z) {
 
 			switch (choice) {
 			case 1:
-				deleteDatas("angkutan");
+				deleteDatas("angkutan", LP, LC);
 				break;
 
 			case 2:
-				deleteDatas("daerah");
+				deleteDatas("daerah", LP, LC);
 				break;
 			}
 		} while (choice != 3);
