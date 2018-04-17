@@ -18,7 +18,7 @@
 ![01](https://user-images.githubusercontent.com/13241336/36650941-b240fd3c-1ad8-11e8-98ac-3b67ff175467.png)
 
 ## TODO
-* [ ] Menu for dashboard program
+* [x] Menu for dashboard program
 * [ ] Procedure addDatas for Angkutan/Daerah
 * [ ] Procedure removeDatas for Angkutan/Daerah
 * [ ] Procedure showDatas for Angkutan/Daerah
