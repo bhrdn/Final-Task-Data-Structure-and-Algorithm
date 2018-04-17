@@ -23,4 +23,4 @@
 * [x] Update datas list
 * [x] Procedure addDatas for Angkutan/Daerah
 * [ ] Procedure removeDatas for Angkutan/Daerah
-* [] Procedure showDatas for Angkutan/Daerah
+* [ ] Procedure showDatas for Angkutan/Daerah
