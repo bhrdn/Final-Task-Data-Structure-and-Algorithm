@@ -97,12 +97,17 @@ void printInfo(listParent L) {
 }
 
 addrParent findElm(listParent L, string x) {
-    addrParent P = L.first;
-    do {
-        if (P->info.kode == x) {
-            return P;
+    addrParent P = NULL;
+    if(L.first != NULL) {
+        addrParent Q = L.first;
+        if(Q->info.kode == x) {
+            P = Q;
+        } else {
+            while ((Q != L.first) && (Q->info.kode != x)) {
+                Q = Q->next;
+            };
+            (Q == L.first) ? P = NULL : P = Q;
         }
-        P = P->next;
-    } while (P != L.first);
-    return NULL;
+    }
+    return P;
 }

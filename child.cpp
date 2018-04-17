@@ -93,10 +93,15 @@ void printInfo(listChild L) {
 }
 
 addrChild findElm(listChild L, string x) {
-    addrChild Q = L.first;
-    while (Q != NULL && Q->info != x) {
-        Q = Q->next;
-    };
+    addrChild Q;
+    if(L.first == NULL && L.last == NULL) {
+        Q = NULL;
+    } else {
+        Q = L.first;
+        while (Q != NULL && Q->info != x) {
+            Q = Q->next;
+        };
+    }
 
     return ((Q == NULL) ? NULL : Q);
 }

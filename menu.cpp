@@ -36,18 +36,20 @@ void addDatas(string x, listParent &LP, listChild &LC, listRel &LR) {
 			cout << "============================" << endl;
 
 			cin.ignore();
-			cout << "> Nama Angkutan: "; getline(cin, angkutan.kode);
+			cout << "> Kode Angkutan: "; getline(cin, angkutan.kode);
 			cout << "> Nama Daerah: "; getline(cin, daerah);
 
-			addrParent srcParent = findElm(LP, angkutan.nama);
+			addrParent srcParent = findElm(LP, angkutan.kode);
 			addrChild srcChild = findElm(LC, daerah);
 
 			if (srcParent != NULL && srcChild != NULL)
 			{
-				addrRel datas = allocate(srcParent, srcChild);
-				insertLast(LR, datas);
-
-				printInfo(LR);
+			// 	addrRel datas = allocate(srcParent, srcChild);
+			// 	// insertLast(LR, datas);
+			// 	insertLast(LR, datas);
+			} else 
+			{
+				cout << ">> Data Not Found" << endl;
 			}
 
 			cout << "[*] Add datas, again? [y/t]: "; cin >> repeat;
