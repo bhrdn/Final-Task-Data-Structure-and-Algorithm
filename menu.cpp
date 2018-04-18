@@ -119,6 +119,35 @@ void showDatas(string x, listParent &LP, listChild &LC, listRel &LR) {
 
 	} else if (x == "sorting") {
 		// print daerah dengan angkutan terbanyak - sedikit (DESC)
+		system("clear");
+		if(LR.first == NULL) {
+			cout << "[*] Empty datas.." << endl;
+		} else {
+			addrRel Q = LR.first, R;
+			int total = 0;
+			while(Q != NULL) {
+				Q = Q->next;
+				total++;
+			}
+			kendaraan a[total];
+			Q = LR.first;
+			int i = 0,j;
+			while(Q != NULL) {
+				j = 0;
+				a[i].nama = Q->child->info;
+				R = LR.first;
+				while(R != NULL) {
+					if((R->parent)->info.nama == a[i].nama) j++;
+					R = R->next;
+				}
+				a[i].total = j;
+				i++;
+				Q = Q->next;
+			}
+			for(int i = 0;i < total;i++) {
+				cout << a[i].nama << " " << a[i].total << endl;
+			}
+		}
 	}
 }
 
@@ -180,14 +209,14 @@ void deleteDatas(string x, listParent &LP, listChild &LC, listRel &LR) {
 				while (Q != NULL) {
 					if ((Q->next)->child == srcDaerah)
 					{
-						if (Q == P.first)
-						{
-							// deleteFirst (relation)
-							// deleteChild
-						} else {
-							// deleteRelation
-							// deleteChild
-						}
+						// if (Q == P->info)
+						// {
+						// 	// deleteFirst (relation)
+						// 	// deleteChild
+						// } else {
+						// 	// deleteRelation
+						// 	// deleteChild
+						// }
 					}
 					Q = Q->next;
 				}

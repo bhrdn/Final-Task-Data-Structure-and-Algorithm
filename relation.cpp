@@ -59,6 +59,7 @@ addrRel findElm(listRel L, addrParent P, addrChild C) {
     while (Q != NULL) {
         if (Q->parent == P && Q->child == C) {
             return Q;
+            break;
         }
         Q = Q->next;
     }
