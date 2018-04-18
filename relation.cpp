@@ -46,7 +46,7 @@ void insertLast(listRel &L, addrRel P) {
 
 void printInfo(listRel L) {
     addrRel P = L.first;
-    while (P != NULL) {
+    while (P != L.first) {
         cout << (P->parent)->info.kode << " -> " << (P->child)->info << endl;
         P = P->next;
     }
@@ -56,7 +56,7 @@ void printInfo(listRel L) {
 
 addrRel findElmParent(listRel L, addrParent P) {
     addrRel Q = L.first;
-    while (Q != NULL) {
+    while (Q != L.first) {
         if (Q->parent == P) {
             return Q;
             break;
@@ -68,7 +68,7 @@ addrRel findElmParent(listRel L, addrParent P) {
 
 addrRel findElmChild(listRel L, addrChild P) {
     addrRel Q = L.first;
-    while (Q != NULL) {
+    while (Q != L.first) {
         if (Q->child == P) {
             return Q;
             break;

@@ -66,6 +66,9 @@ void showDatas(string x, listParent &LP, listChild &LC, listRel &LR) {
 		cout << "[*] Data Daerah" << endl;
 		printInfo(LC);
 
+		cout << "[*] Data Relasi" << endl;
+		printInfo(LR);
+
 		cin.ignore().get();
 	} else if (x == "daerah") {
 		system("clear");
