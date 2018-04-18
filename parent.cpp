@@ -96,6 +96,7 @@ void printInfo(listParent L) {
     }
 }
 
+// small bug (first)
 addrParent findElm(listParent L, string x) {
     addrParent P = NULL;
     if(L.first != NULL) {
