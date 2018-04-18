@@ -46,7 +46,7 @@ void addDatas(string x, listParent &LP, listChild &LC, listRel &LR) {
 			{
 				addrRel datas = allocate(srcParent, srcChild);
 				insertLast(LR, datas);
-			} else 
+			} else
 			{
 				cout << "[*] Empty datas.." << endl;
 			}
@@ -58,6 +58,8 @@ void addDatas(string x, listParent &LP, listChild &LC, listRel &LR) {
 
 void showDatas(string x, listParent &LP, listChild &LC, listRel &LR) {
 	if (x == "all") {
+		system("clear");
+
 		cout << "[*] Data Angkutan" << endl;
 		printInfo(LP); cout << endl;
 
@@ -66,16 +68,17 @@ void showDatas(string x, listParent &LP, listChild &LC, listRel &LR) {
 
 		cin.ignore().get();
 	} else if (x == "daerah") {
-		// Masih Error Disini
+		system("clear");
+
 		cin.ignore();
 		cout << "> Nama Daerah: "; getline(cin, daerah);
-		
-		if(findElm(LC, daerah) == NULL)
+
+		if (findElm(LC, daerah) == NULL)
 		{
-			cout << "[*] Empty datas.." << endl;			
+			cout << "[*] Empty datas.." << endl;
 		} else {
 			addrRel P = LR.first;
-			if(P->next == LR.first) {
+			if (P->next == LR.first) {
 				cout << "-> " << (P->parent)->info.kode << " | " << (P->parent)->info.nama << endl;
 			} else {
 				while (P != LR.first) {
@@ -90,6 +93,8 @@ void showDatas(string x, listParent &LP, listChild &LC, listRel &LR) {
 		cin.ignore().get();
 
 	} else if (x == "angkutan") {
+		system("clear");
+
 		cin.ignore();
 		cout << "> Kode Angkutan: "; getline(cin, angkutan.kode);
 		if (findElm(LP, angkutan.kode) == NULL)
@@ -97,7 +102,7 @@ void showDatas(string x, listParent &LP, listChild &LC, listRel &LR) {
 			cout << "[*] Empty datas.." << endl;
 		} else {
 			addrRel P = LR.first;
-			if(P->next == LR.first) {
+			if (P->next == LR.first) {
 				cout << "-> " << (P->child)->info << endl;
 			} else {
 				while (P != LR.first) {
@@ -106,12 +111,12 @@ void showDatas(string x, listParent &LP, listChild &LC, listRel &LR) {
 						cout << "-> " << (P->child)->info << endl;
 					}
 					P = P->next;
-				}	
+				}
 			}
 		}
 
 		cin.ignore().get();
-		
+
 	} else if (x == "sorting") {
 		// print daerah dengan angkutan terbanyak - sedikit (DESC)
 	}
@@ -138,7 +143,7 @@ void updateDatas(string x, listParent &LP, listChild &LC, listRel &LR) {
 
 			cout << "[*] Update datas, again? [y/t]: "; cin >> repeat;
 		} while (repeat != 't');
-	} else {
+	} else if (x == "daerah") {
 		do {
 			system("clear");
 			cin.ignore();
@@ -165,8 +170,9 @@ void deleteDatas(string x, listParent &LP, listChild &LC, listRel &LR) {
 		// 1. find addr parent
 		// 2. find addr relasi
 		// 3. delete it
-	} else {
-		// delete child
+	} else if (x == "daerah") {
+		addrChild srcDaerah = findElm(LC, x);
+		// deleteAfter
 	}
 }
 

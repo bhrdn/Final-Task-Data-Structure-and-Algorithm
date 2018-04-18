@@ -1,5 +1,3 @@
-#include "init.h"
-
 typedef struct elmRel *addrRel;
 
 struct elmRel {
