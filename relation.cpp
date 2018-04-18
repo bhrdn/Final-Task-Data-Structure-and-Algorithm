@@ -54,10 +54,22 @@ void printInfo(listRel L) {
 
 }
 
-addrRel findElm(listRel L, addrParent P, addrChild C) {
+addrRel findElmParent(listRel L, addrParent P) {
     addrRel Q = L.first;
     while (Q != NULL) {
-        if (Q->parent == P && Q->child == C) {
+        if (Q->parent == P) {
+            return Q;
+            break;
+        }
+        Q = Q->next;
+    }
+    return NULL;
+}
+
+addrRel findElmChild(listRel L, addrChild P) {
+    addrRel Q = L.first;
+    while (Q != NULL) {
+        if (Q->child == P) {
             return Q;
             break;
         }

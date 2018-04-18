@@ -203,27 +203,13 @@ void deleteDatas(string x, listParent &LP, listChild &LC, listRel &LR) {
 		addrChild srcDaerah = findElm(LC, x);
 		if (srcDaerah != NULL)
 		{
-			addrParent P = LP.first;
-			while (P != NULL) {
-				addrRel Q = LR.first;
-				while (Q != NULL) {
-					if ((Q->next)->child == srcDaerah)
-					{
-						// if (Q == P->info)
-						// {
-						// 	// deleteFirst (relation)
-						// 	// deleteChild
-						// } else {
-						// 	// deleteRelation
-						// 	// deleteChild
-						// }
-					}
-					Q = Q->next;
-				}
-				P = P->next;
+			addrRel srcRelation = findElmChild(LR, srcDaerah);
+			if (srcRelation != NULL)
+			{
+				// deleteRelation
+				// deleteChild
 			}
 		}
-		// deleteAfter
 	}
 }
 
