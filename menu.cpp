@@ -183,10 +183,13 @@ void deleteDatas(string x, listParent &LP, listChild &LC, listRel &LR) {
 						if (Q == P.first)
 						{
 							// deleteFirst (relation)
+							// deleteChild
 						} else {
 							// deleteRelation
+							// deleteChild
 						}
 					}
+					Q = Q->next;
 				}
 				P = P->next;
 			}
