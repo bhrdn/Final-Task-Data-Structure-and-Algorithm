@@ -65,7 +65,7 @@ void showDatas(string x, listParent &LP, listChild &LC, listRel &LR) {
 		printInfo(LP); cout << endl;
 
 		cout << "[*] Data Daerah" << endl;
-		printInfo(LC);
+		printInfo(LC); cout << endl;
 
 		cout << "[*] Data Relasi" << endl;
 		printInfo(LR);
@@ -122,36 +122,19 @@ void showDatas(string x, listParent &LP, listChild &LC, listRel &LR) {
 		cin.ignore().get();
 
 	} else if (x == "sorting") {
-		// print daerah dengan angkutan terbanyak - sedikit (DESC)
 		system("clear");
-		if (LR.first == NULL) {
-			cout << "[*] Empty datas.." << endl;
-		} else {
-			addrRel Q = LR.first, R;
-			int total = 0;
-			while (Q != NULL) {
-				Q = Q->next;
-				total++;
-			}
-			kendaraan a[total];
-			Q = LR.first;
-			int i = 0, j;
-			while (Q != NULL) {
-				j = 0;
-				a[i].nama = Q->child->info;
-				R = LR.first;
-				while (R != NULL) {
-					if ((R->parent)->info.nama == a[i].nama) j++;
-					R = R->next;
-				}
-				a[i].total = j;
-				i++;
-				Q = Q->next;
-			}
-			for (int i = 0; i < total; i++) {
-				cout << a[i].nama << " " << a[i].total << endl;
-			}
+		cin.ignore();
+
+		addrChild C = LC.first;
+		while (C != NULL) {
+			cout << C->info << " => " << totalChild(LR, C) << endl;
+			// push x[index].child <- C
+			// push x[index].total <- totalChild(LR, C)
+			C = C->next;
 		}
+
+		// print sort(x, 'ASC')[0].child->info || sort(x, 'DESC')[0].child->info
+		cin.ignore().get();
 	}
 }
 
@@ -221,7 +204,7 @@ void deleteDatas(string x, listParent &LP, listChild &LC, listRel &LR) {
 	} else if (x == "daerah") {
 		cout << "> Daerah: "; getline(cin, daerah);
 		addrChild srcDaerah = findElm(LC, daerah);
-		
+
 		if (srcDaerah != NULL)
 		{
 			addrRel srcRelation = findElmChild(LR, srcDaerah);

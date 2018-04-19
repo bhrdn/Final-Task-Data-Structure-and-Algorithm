@@ -12,6 +12,17 @@ addrRel allocate(addrParent P, addrChild C) {
     return Q;
 }
 
+int totalChild(listRel LR, addrChild C) {
+    int i = 0; // counter
+    addrRel Q = LR.first;
+    while (Q != LR.first) {
+        ((Q->child != C) ?: i++);
+        Q = Q->next;
+    }
+
+    return i;
+}
+
 void insertFirst(listRel &L, addrRel P) {
     if (L.first == NULL) {
         L.first = P;
