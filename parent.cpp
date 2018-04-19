@@ -98,13 +98,13 @@ void printInfo(listParent L) {
 
 // small bug (first)
 addrParent findElm(listParent L, string x) {
-    addrParent P = NULL;
-    if(L.first != NULL) {
+    addrParent P;
+    if (L.first != NULL) {
         addrParent Q = L.first;
-        if(Q->info.kode == x) {
+        if (Q->info.kode == x) {
             P = Q;
         } else {
-            while ((Q != L.first) && (Q->info.kode != x)) {
+            while ((Q != NULL) && (Q->info.kode != x)) {
                 Q = Q->next;
             };
             (Q == L.first) ? P = NULL : P = Q;

@@ -46,7 +46,7 @@ void insertLast(listRel &L, addrRel P) {
 
 void printInfo(listRel L) {
     addrRel P = L.first;
-    while (P != L.first) {
+    while (P->next != L.first) {
         cout << (P->parent)->info.kode << " -> " << (P->child)->info << endl;
         P = P->next;
     }
