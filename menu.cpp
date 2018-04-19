@@ -46,6 +46,7 @@ void addDatas(string x, listParent &LP, listChild &LC, listRel &LR) {
 			{
 				addrRel datas = allocate(srcParent, srcChild);
 				insertLast(LR, datas);
+				printInfo(LR);
 			} else
 			{
 				cout << "[*] Empty datas.." << endl;

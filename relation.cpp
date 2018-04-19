@@ -49,6 +49,7 @@ void printInfo(listRel L) {
         cout << (P->parent)->info.kode << " -> " << (P->child)->info << endl;
         P = P->next;
     }
+    cout << (P->parent)->info.kode << " -> " << (P->child)->info << endl;
 }
 
 addrRel findElmParent(listRel L, addrParent P) {
