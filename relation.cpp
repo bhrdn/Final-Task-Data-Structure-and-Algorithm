@@ -15,13 +15,12 @@ addrRel allocate(addrParent P, addrChild C) {
 void insertFirst(listRel &L, addrRel P) {
     if (L.first == NULL) {
         L.first = P;
-        // P->next = P;
         P->next = L.first;
     } else {
         addrRel Q = L.first;
         while (Q->next != L.first) {
             Q = Q->next;
-        }
+        }   
 
         P->next = L.first;
         Q->next = P;
@@ -50,8 +49,6 @@ void printInfo(listRel L) {
         cout << (P->parent)->info.kode << " -> " << (P->child)->info << endl;
         P = P->next;
     }
-    // cout << (P->parent)->info.kode << " -> " << (P->child)->info << endl;
-
 }
 
 addrRel findElmParent(listRel L, addrParent P) {
