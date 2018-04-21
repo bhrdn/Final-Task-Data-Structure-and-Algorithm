@@ -86,6 +86,17 @@ void deleteAfter(listParent &L, addrParent Prec, addrParent &P) {
     deallocate(P);
 }
 
+void deleteParent(listParent &L, addrParent &P) {
+    if (L.first != P)
+    {
+        addrParent X = L.first;
+        while (X != NULL && X != P) {
+            X = X->next;
+        }
+        cout << X->info.nama << endl;
+    } else deleteFirst(L, P);
+}
+
 void printInfo(listParent L) {
     addrParent P = L.first;
     if (L.first != NULL) {

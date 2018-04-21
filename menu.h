@@ -2,7 +2,6 @@
 #include "parent.cpp"
 #include "child.cpp"
 #include "relation.cpp"
-#include "sort.h"
 
 int choice; char repeat;
 infoParent angkutan; string daerah;

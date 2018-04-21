@@ -122,18 +122,30 @@ void showDatas(string x, listParent &LP, listChild &LC, listRel &LR) {
 		cin.ignore().get();
 
 	} else if (x == "sorting") {
+		int total, i = 0; addrChild C = LC.first;
+
 		system("clear");
 		cin.ignore();
 
-		addrChild C = LC.first;
 		while (C != NULL) {
-			cout << C->info << " => " << totalChild(LR, C) << endl;
-			// push x[index].child <- C
-			// push x[index].total <- totalChild(LR, C)
+			total++;
 			C = C->next;
 		}
 
-		// print sort(x, 'ASC')[0].child->info || sort(x, 'DESC')[0].child->info
+		vector<int> x(total);
+
+		while (C != NULL) {
+			x[i] = totalChild(LR, C);
+			C = C->next;
+		}
+
+		sort(x.begin(), x.end());
+
+		for (int i = 0; i < total; ++i)
+		{
+			cout << x[i] << endl;
+		}
+		
 		cin.ignore().get();
 	}
 }
@@ -196,9 +208,9 @@ void deleteDatas(string x, listParent &LP, listChild &LC, listRel &LR) {
 				cout << "here" << endl;
 				cin.ignore().get();
 				// deleteRelation
-				// deleteParent
+				deleteParent(LP, srcAngkutan);
 			} else {
-				// deleteParent
+				deleteParent(LP, srcAngkutan);
 			}
 		}
 	} else if (x == "daerah") {

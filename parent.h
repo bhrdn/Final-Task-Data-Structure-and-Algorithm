@@ -28,6 +28,7 @@ void insertAfter(listParent &L, addrParent Prec, addrParent P);
 void deleteFirst(listParent &L, addrParent &P);
 void deleteLast(listParent &L, addrParent &P);
 void deleteAfter(listParent &L, addrParent Prec, addrParent &P);
+void deleteParent(listParent &L, addrParent &P);
 
 void printInfo(listParent L);
 addrParent findElm(listParent L, infoParent x);
