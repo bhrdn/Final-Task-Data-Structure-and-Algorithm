@@ -121,31 +121,43 @@ void showDatas(string x, listParent &LP, listChild &LC, listRel &LR) {
 
 		cin.ignore().get();
 
-	} else if (x == "sorting") {
-		int total, i = 0; addrChild C = LC.first;
-
+	} else if (x == "minmax") {
 		system("clear");
 		cin.ignore();
 
+		addrChild C = LC.first; int max = 0, min = 1, i;
 		while (C != NULL) {
-			total++;
+			addrRel Q = LR.first; i = 0;
+			while (Q->next != LR.first) {
+				(Q->child != C) ? : i++;
+				Q = Q->next;
+			} (Q->child != C) ? : i++;
+
+			if (i > max) max = i;
+			if (i != 0 && i < min) min = i;
 			C = C->next;
 		}
 
-		vector<int> x(total);
-
+		C = LC.first;
 		while (C != NULL) {
-			x[i] = totalChild(LR, C);
+			addrRel Q = LR.first; i = 0;
+			while (Q->next != LR.first) {
+				(Q->child != C) ? : i++;
+				Q = Q->next;
+			} (Q->child != C) ? : i++;
+
+			if (i == max) {
+				cout << "Daerah dengan angkutan terbanyak: " << C->info << endl;
+			}
+
+			if (i == min)
+			{
+				cout << "Daerah dengan angkutan tersulit: " << C->info << endl;
+			}
+
 			C = C->next;
 		}
 
-		sort(x.begin(), x.end());
-
-		for (int i = 0; i < total; ++i)
-		{
-			cout << x[i] << endl;
-		}
-		
 		cin.ignore().get();
 	}
 }
@@ -289,7 +301,7 @@ void showMenu(string x, listParent &LP, listChild &LC, listRel &LR) {
 				break;
 
 			case 4:
-				showDatas("sorting", LP, LC, LR);
+				showDatas("minmax", LP, LC, LR);
 				break;
 			}
 		} while (choice != 5);
