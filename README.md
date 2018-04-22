@@ -14,6 +14,6 @@
 	* [x] Menampilkan data keseluruhan alat angkutan beserta daerah yang bisa dikujunginya.
 	* [x] Menampilkan data daerah yang bisa dilaui oleh alat angkutan tertentu.
 	* [x] Menampilkan data alat angkutan yang bisa mengunjungi suatu daerah tertentu.
-	* [ ] Menampilkan data daerah yang paling mudah dan yang paling sulit sarana transportasinya.
+	* [x] Menampilkan data daerah yang paling mudah dan yang paling sulit sarana transportasinya.
 * **Model:** Multi-Linked List M to N
 ![01](https://user-images.githubusercontent.com/13241336/36650941-b240fd3c-1ad8-11e8-98ac-3b67ff175467.png)
