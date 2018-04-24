@@ -102,13 +102,14 @@ void deleteParent(listParent &L, addrParent &P) {
 }
 
 void printInfo(listParent L) {
-    addrParent P = L.first;
-    if (P != NULL) {
-        do {
-            cout << "-> " << P->info.kode << " | " << P->info.nama << endl;
+    if (L.first == NULL) cout << "[-] Datas not found.." << endl;
+    else {
+        addrParent P = L.first;
+        while (P != NULL) {
+            cout << "-> " << P->info.kode << endl;
             P = P->next;
-        } while ((P) != NULL);
-    } cout << "[-] Datas not found.." << endl;
+        }
+    }
 }
 
 // small bug (first)
