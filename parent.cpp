@@ -93,8 +93,11 @@ void deleteParent(listParent &L, addrParent &P) {
         while (X->next != NULL && X->next != P) {
             X = X->next;
         }
-        X->next = NULL;
-        deallocate(X);
+
+        X->next = P->next;
+        P->next = NULL;
+        
+        deallocate(P);
     } else deleteFirst(L, P);
 }
 
