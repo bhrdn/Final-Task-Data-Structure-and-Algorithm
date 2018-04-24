@@ -1,22 +1,41 @@
 #include "menu.h"
 
+void printBanner() {
+	cout << R"(
+  ==============================================
+ | FINAL TASK DATA STRUCTURE AND ALGORITHM 2018 |
+  ==============================================
+
+ ---------------+---------------
+           ___ /^^[___              _
+          /|^+----+   |#___________//
+        ( -+ |____|    ______-----+/
+         ==_________--'            \
+           ~_|___|__
+
+ [Data Alat Transport]
+ - Habib Bahruddin (1301174412)
+ - Husna Assabiila Yassarah (1301174079)
+	)";
+}
+
 void addDatas(string x, listParent &LP, listChild &LC, listRel &LR) {
 	if (x == "angkutan")
 	{
 		do {
 			system("clear");
 			cin.ignore();
+			cout << "[ ADD DATAS (Angkutan)]" << endl;
 			cout << "> Plat Nomor: "; getline(cin, angkutan.kode);
 			cout << "> Nama Angkutan: "; getline(cin, angkutan.nama);
-			cout << endl;
 
 			if (findElm(LP, angkutan.kode) == false)
 			{
 				addrParent P = allocate(angkutan);
 				insertFirst(LP, P);
-			} else cout << "[-] Duplicate datas.." << endl;
+			} else cout << endl << "[-] Duplicate datas.." << endl;
 
-			cout << "[*] Add datas, again? [y/t]: "; cin >> repeat;
+			cout << endl << "[*] Add datas, again? [y/t]: "; cin >> repeat;
 		} while (repeat != 't');
 	} else if (x == "daerah") {
 		do {
@@ -29,9 +48,9 @@ void addDatas(string x, listParent &LP, listChild &LC, listRel &LR) {
 			{
 				addrChild P = allocate(daerah);
 				insertLast(LC, P);
-			} else cout << "[-] Duplicate datas.." << endl;
+			} else cout << endl << "[-] Duplicate datas.." << endl;
 
-			cout << "[*] Add datas, again? [y/t]: "; cin >> repeat;
+			cout << endl << "[*] Add datas, again? [y/t]: "; cin >> repeat;
 		} while (repeat != 't');
 	} else if (x == "relasi") {
 		do {
@@ -58,7 +77,7 @@ void addDatas(string x, listParent &LP, listChild &LC, listRel &LR) {
 				cout << "[*] Empty datas.." << endl;
 			}
 
-			cout << "[*] Add datas, again? [y/t]: "; cin >> repeat;
+			cout << endl << "[*] Add datas, again? [y/t]: "; cin >> repeat;
 		} while (repeat != 't');
 	}
 }
@@ -256,13 +275,13 @@ void showMenu(string x, listParent &LP, listChild &LC, listRel &LR) {
 		system("clear");
 		do {
 			system("clear");
-			cout << "=== CREATE DATAS ===" << endl;
+			cout << " [ CREATE DATAS ]" << endl;
 			cout << endl
-			     << " 1. Add angkutan" << endl
-			     << " 2. Add daerah" << endl
-			     << " 3. Add relasi" << endl
-			     << " 4. Back to dashboard menu" << endl
-			     << "\n[*] Enter your choice and press <enter>: ";
+			     << " [1] Add datas (Angkutan)" << endl
+			     << " [2] Add datas (Daerah)" << endl
+			     << " [3] Add new Relation" << endl
+			     << " [4] Back to dashboard menu" << endl << endl << endl
+			     << " [*] Enter your choice and press <enter>: ";
 			cin >> choice;
 
 			switch (choice) {
@@ -283,14 +302,14 @@ void showMenu(string x, listParent &LP, listChild &LC, listRel &LR) {
 		system("clear");
 		do {
 			system("clear");
-			cout << "=== READ DATAS ===" << endl;
+			cout << "[ SHOW DATAS ]" << endl;
 			cout << endl
-			     << " 1. Tampilkan semua data" << endl
-			     << " 2. Tampilkan data daerah (search by angkutan)" << endl
-			     << " 3. Tampilkan data angkutan (search by daerah)" << endl
-			     << " 4. Tampilkan daerah yang paling banyak angkutan (DESC)" << endl
-			     << " 5. Back to dashboard menu" << endl
-			     << "\n[*] Enter your choice and press <enter>: ";
+			     << " [1] Show all datas" << endl
+			     << " [2] Show datas (Daerah) - (search by Angkutan)" << endl
+			     << " [3] Show datas (Angkutan) - (search by Daerah)" << endl
+			     << " [4] Show the easiest and most difficult datas of the transport area." << endl
+			     << " [5] Back to dashboard menu" << endl << endl
+			     << " [*] Enter your choice and press <enter>: ";
 			cin >> choice;
 
 			switch (choice) {
@@ -316,12 +335,12 @@ void showMenu(string x, listParent &LP, listChild &LC, listRel &LR) {
 		system("clear");
 		do {
 			system("clear");
-			cout << "=== UPDATE DATAS ===" << endl;
+			cout << "[ UPDATE DATAS ]" << endl;
 			cout << endl
-			     << " 1. Update angkutan" << endl
-			     << " 2. Update daerah" << endl
-			     << " 3. Back to dashboard menu" << endl
-			     << "\n[*] Enter your choice and press <enter>: ";
+			     << " [1] Update angkutan" << endl
+			     << " [2] Update daerah" << endl
+			     << " [3] Back to dashboard menu" << endl << endl
+			     << " [*] Enter your choice and press <enter>: ";
 			cin >> choice;
 
 			switch (choice) {
@@ -340,10 +359,10 @@ void showMenu(string x, listParent &LP, listChild &LC, listRel &LR) {
 			system("clear");
 			cout << "=== DELETE DATAS ===" << endl;
 			cout << endl
-			     << " 1. Delete angkutan" << endl
-			     << " 2. Delete daerah" << endl
-			     << " 3. Back to dashboard menu" << endl
-			     << "\n[*] Enter your choice and press <enter>: ";
+			     << " [1] Delete angkutan" << endl
+			     << " [2] Delete daerah" << endl
+			     << " [3] Back to dashboard menu" << endl << endl
+			     << " [*] Enter your choice and press <enter>: ";
 			cin >> choice;
 
 			switch (choice) {

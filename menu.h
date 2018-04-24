@@ -6,6 +6,7 @@
 int choice; char repeat;
 infoParent angkutan; string daerah;
 
+void printBanner();
 void addDatas(string x, listParent &LP, listChild &LC, listRel &LR);
 void showDatas(string x, listParent &LP, listChild &LC, listRel &LR);
 void updateDatas(string x, listParent &LP, listChild &LC, listRel &LR);

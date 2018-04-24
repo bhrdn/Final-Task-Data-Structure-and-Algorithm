@@ -9,19 +9,19 @@ int main(int argc, char const *argv[])
 	createList(daftarDaerah);
 	listRel Relation;
 	createList(Relation);
-	
+
 	int choice;
 	do
 	{
 		system("clear");
-		cout << "=== DATA ALAT TRANSPORT ===" << endl;
+		printBanner();
 		cout << endl
-		     << " 1. Create" << endl
-		     << " 2. Read" << endl
-		     << " 3. Update" << endl
-		     << " 4. Delete" << endl
-		     << " 5. Exit" << endl
-		     << "\n[*] Enter your choice and press <enter>: ";
+			<< " [1] Create" << endl
+			<< " [2] Read" << endl
+			<< " [3] Update" << endl
+			<< " [4] Delete" << endl
+			<< " [5] Exit" << endl << endl
+			<< " [*] Enter your choice and press <enter>: ";
 		cin >> choice;
 
 		switch (choice)
