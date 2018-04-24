@@ -67,7 +67,7 @@ void printInfo(listRel L) {
             P = P->next;
         }
         cout << "-> " << (P->parent)->info.kode << " <---> " << (P->child)->info << endl;
-    }
+    } else cout << "[-] Datas not found.." << endl;
 }
 
 addrRel findElmParent(listRel L, addrParent P) {

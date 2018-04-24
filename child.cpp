@@ -85,16 +85,19 @@ void deleteAfter(listChild &L, addrChild Prec, addrChild &P) {
 }
 
 void printInfo(listChild L) {
-    addrChild P = L.first;
-    while (P != NULL) {
-        cout << "-> " << P->info << endl;
-        P = P->next;
-    }
+    if (L.first != NULL)
+    {
+        addrChild P = L.first;
+        while (P != NULL) {
+            cout << "-> " << P->info << endl;
+            P = P->next;
+        }
+    } else cout << "[-] Datas not found.." << endl;
 }
 
 addrChild findElm(listChild L, string x) {
     addrChild Q;
-    if(L.first == NULL && L.last == NULL) {
+    if (L.first == NULL && L.last == NULL) {
         Q = NULL;
     } else {
         Q = L.first;

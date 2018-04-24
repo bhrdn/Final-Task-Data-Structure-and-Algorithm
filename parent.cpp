@@ -96,19 +96,19 @@ void deleteParent(listParent &L, addrParent &P) {
 
         X->next = P->next;
         P->next = NULL;
-        
+
         deallocate(P);
     } else deleteFirst(L, P);
 }
 
 void printInfo(listParent L) {
     addrParent P = L.first;
-    if (L.first != NULL) {
+    if (P != NULL) {
         do {
             cout << "-> " << P->info.kode << " | " << P->info.nama << endl;
             P = P->next;
         } while ((P) != NULL);
-    }
+    } cout << "[-] Datas not found.." << endl;
 }
 
 // small bug (first)
