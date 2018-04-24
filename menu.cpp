@@ -252,16 +252,37 @@ void deleteDatas(string x, listParent &LP, listChild &LC, listRel &LR) {
 
 		if (srcAngkutan != NULL)
 		{
-			addrRel srcRelation = findElmParent(LR, srcAngkutan);
-			if (srcRelation != NULL)
+			addrRel Q = LR.first;
+			if (Q->next == LR.first && (Q->next)->parent == srcAngkutan)
 			{
-				cout << "here" << endl;
-				cin.ignore().get();
-				// deleteRelation
-				deleteParent(LP, srcAngkutan);
+				Q->next = NULL;
+				LR.first = NULL;
 			} else {
-				deleteParent(LP, srcAngkutan);
+				addrRel P;
+				while (Q->next != LR.first && (Q->next)->parent != srcAngkutan) {
+					P = Q;
+					Q = Q->next;
+				}
+
+				if (srcAngkutan == (LR.first)->parent)
+				{
+					while (P->next != LR.first) {
+						P = P->next;
+					}
+
+					LR.first = Q->next;
+					P->next = LR.first;
+					Q->next = NULL;
+				} else if (Q->next == LR.first) {
+					P->next = LR.first;
+					Q->next = NULL;
+				} else {
+					P->next = Q->next;
+					Q->next = NULL;
+				}
 			}
+
+			deleteParent(LP, srcAngkutan);
 		}
 	} else if (x == "daerah") {
 		cout << "> Daerah: "; getline(cin, daerah);
