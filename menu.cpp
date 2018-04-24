@@ -10,8 +10,11 @@ void addDatas(string x, listParent &LP, listChild &LC, listRel &LR) {
 			cout << "> Nama Angkutan: "; getline(cin, angkutan.nama);
 			cout << endl;
 
-			addrParent P = allocate(angkutan);
-			insertFirst(LP, P);
+			if (findElm(LP, angkutan.kode) == false)
+			{
+				addrParent P = allocate(angkutan);
+				insertFirst(LP, P);
+			} else cout << "[-] Duplicate datas.." << endl;
 
 			cout << "[*] Add datas, again? [y/t]: "; cin >> repeat;
 		} while (repeat != 't');
@@ -22,8 +25,11 @@ void addDatas(string x, listParent &LP, listChild &LC, listRel &LR) {
 			cout << "> Nama Daerah: "; getline(cin, daerah);
 			cout << endl;
 
-			addrChild P = allocate(daerah);
-			insertLast(LC, P);
+			if (findElm(LC, daerah) == false)
+			{
+				addrChild P = allocate(daerah);
+				insertLast(LC, P);
+			} else cout << "[-] Duplicate datas.." << endl;
 
 			cout << "[*] Add datas, again? [y/t]: "; cin >> repeat;
 		} while (repeat != 't');
