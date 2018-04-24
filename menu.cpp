@@ -114,23 +114,19 @@ void showDatas(string x, listParent &LP, listChild &LC, listRel &LR) {
 		if (srcChild == NULL)
 		{
 			cout << endl << "[-] Datas not found.." << endl;
-		} else {
+		} else if (LR.first != NULL) {
 			addrRel P = LR.first;
-			if (P == LR.first) {
-				cout << "-> " << (P->parent)->info.kode << " | " << (P->parent)->info.nama << endl;
-			} else {
-				while (P->next != LR.first) {
-					if (P->child == srcChild)
-					{
-						cout << "-> " << (P->parent)->info.kode << " " << (P->parent)->info.nama << endl;
-					}
-					P = P->next;
-				}
-
+			while (P->next != LR.first) {
 				if (P->child == srcChild)
 				{
-					cout << "-> " << (P->parent)->info.kode << " " << (P->parent)->info.nama << endl;
+					cout << "-> " << (P->parent)->info.kode << " | " << (P->parent)->info.nama << endl;
 				}
+				P = P->next;
+			}
+
+			if (P->child == srcChild)
+			{
+				cout << "-> " << (P->parent)->info.kode << " | " << (P->parent)->info.nama << endl;
 			}
 		}
 		cin.ignore().get();
@@ -146,23 +142,19 @@ void showDatas(string x, listParent &LP, listChild &LC, listRel &LR) {
 		if (srcParent == NULL)
 		{
 			cout << endl << "[-] Datas not found.." << endl;
-		} else {
+		} else if (LR.first != NULL) {
 			addrRel P = LR.first;
-			if (P == LR.first) {
-				cout << "-> " << (P->child)->info << endl;
-			} else {
-				while (P->next != LR.first) {
-					if (P->parent == srcParent)
-					{
-						cout << "-> " << (P->child)->info << endl;
-					}
-					P = P->next;
-				}
-
+			while (P->next != LR.first) {
 				if (P->parent == srcParent)
 				{
 					cout << "-> " << (P->child)->info << endl;
 				}
+				P = P->next;
+			}
+
+			if (P->parent == srcParent)
+			{
+				cout << "-> " << (P->child)->info << endl;
 			}
 		}
 
