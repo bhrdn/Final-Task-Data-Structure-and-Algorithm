@@ -90,10 +90,11 @@ void deleteParent(listParent &L, addrParent &P) {
     if (L.first != P)
     {
         addrParent X = L.first;
-        while (X != NULL && X != P) {
+        while (X->next != NULL && X->next != P) {
             X = X->next;
         }
-        cout << X->info.nama << endl;
+
+        X->next = NULL;        
     } else deleteFirst(L, P);
 }
 
