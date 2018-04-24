@@ -36,13 +36,13 @@ void addDatas(string x, listParent &LP, listChild &LC, listRel &LR) {
 			} else cout << endl << "[-] Duplicate datas.." << endl;
 
 			cout << endl << "[*] Add datas, again? [y/t]: "; cin >> repeat;
-		} while (repeat != 't');
+		} while (repeat != 't' && repeat != 'T');
 	} else if (x == "daerah") {
 		do {
 			system("clear");
 			cin.ignore();
+			cout << "[ ADD DATAS (Daerah)]" << endl;
 			cout << "> Nama Daerah: "; getline(cin, daerah);
-			cout << endl;
 
 			if (findElm(LC, daerah) == false)
 			{
@@ -51,16 +51,21 @@ void addDatas(string x, listParent &LP, listChild &LC, listRel &LR) {
 			} else cout << endl << "[-] Duplicate datas.." << endl;
 
 			cout << endl << "[*] Add datas, again? [y/t]: "; cin >> repeat;
-		} while (repeat != 't');
+		} while (repeat != 't' && repeat != 'T');
 	} else if (x == "relasi") {
 		do {
 			system("clear");
-			printInfo(LP);
-			cout << "============================" << endl;
-			printInfo(LC);
-			cout << "============================" << endl;
-
 			cin.ignore();
+			cout << " [ ADD NEW RELATION - From Parent to Child ]" << endl << endl;
+
+			cout << "[*] Datas Parent (Angkutan)" << endl;
+			printInfo(LP);
+			cout << endl;
+			
+			cout << "[*] Datas Child (Daerah)" << endl;
+			printInfo(LC);
+			cout << endl;
+
 			cout << "> Kode Angkutan: "; getline(cin, angkutan.kode);
 			cout << "> Nama Daerah: "; getline(cin, daerah);
 
@@ -71,20 +76,22 @@ void addDatas(string x, listParent &LP, listChild &LC, listRel &LR) {
 			{
 				addrRel datas = allocate(srcParent, srcChild);
 				insertLast(LR, datas);
-				printInfo(LR);
 			} else
 			{
-				cout << "[*] Empty datas.." << endl;
+				cout << endl << "[-] Datas not found.." << endl;
 			}
 
 			cout << endl << "[*] Add datas, again? [y/t]: "; cin >> repeat;
-		} while (repeat != 't');
+		} while (repeat != 't' && repeat != 'T');
 	}
 }
 
 void showDatas(string x, listParent &LP, listChild &LC, listRel &LR) {
 	if (x == "all") {
 		system("clear");
+		cin.ignore();
+
+		cout << " [ SHOW ALL DATAS ] " << endl << endl;
 
 		cout << "[*] Data Angkutan" << endl;
 		printInfo(LP); cout << endl;
@@ -98,13 +105,14 @@ void showDatas(string x, listParent &LP, listChild &LC, listRel &LR) {
 		cin.ignore().get();
 	} else if (x == "daerah") {
 		system("clear");
-
 		cin.ignore();
+
+		cout << " [ SHOW DATAS PARENT (Angkutan) - search by child (Daerah)]" << endl;
 		cout << "> Nama Daerah: "; getline(cin, daerah);
 
 		if (findElm(LC, daerah) == NULL)
 		{
-			cout << "[*] Empty datas.." << endl;
+			cout << endl << "[-] Datas not found.." << endl;
 		} else {
 			addrRel P = LR.first;
 			if (P->next == LR.first) {
@@ -123,12 +131,14 @@ void showDatas(string x, listParent &LP, listChild &LC, listRel &LR) {
 
 	} else if (x == "angkutan") {
 		system("clear");
-
 		cin.ignore();
+
+		cout << " [ SHOW DATAS CHILD (Daerah) - search by parent (Angkutan)]" << endl;
 		cout << "> Kode Angkutan: "; getline(cin, angkutan.kode);
+
 		if (findElm(LP, angkutan.kode) == NULL)
 		{
-			cout << "[*] Empty datas.." << endl;
+			cout << endl << "[-] Datas not found.." << endl;
 		} else {
 			addrRel P = LR.first;
 			if (P->next == LR.first) {
@@ -145,10 +155,11 @@ void showDatas(string x, listParent &LP, listChild &LC, listRel &LR) {
 		}
 
 		cin.ignore().get();
-
 	} else if (x == "minmax") {
 		system("clear");
 		cin.ignore();
+
+		cout << " [ SHOW THE EASIEST AND MOST DIFFICULT DATAS CHILD (Daerah) ] " << endl;
 
 		addrChild C = LC.first; int max = 0, min = 1, i;
 		while (C != NULL) {
@@ -172,12 +183,12 @@ void showDatas(string x, listParent &LP, listChild &LC, listRel &LR) {
 			} (Q->child != C) ? : i++;
 
 			if (i == max) {
-				cout << "Daerah dengan angkutan terbanyak: " << C->info << endl;
+				cout << "[*] Easiest: " << C->info << endl;
 			}
 
 			if (i == min)
 			{
-				cout << "Daerah dengan angkutan tersulit: " << C->info << endl;
+				cout << "[*] Difficult: " << C->info << endl;
 			}
 
 			C = C->next;
@@ -192,41 +203,39 @@ void updateDatas(string x, listParent &LP, listChild &LC, listRel &LR) {
 		do {
 			system("clear");
 			cin.ignore();
+
+			cout << " [ UPDATE DATAS PARENT (Angkutan) ]" << endl << endl;
 			cout << "> Plat Nomor: "; getline(cin, angkutan.kode);
-			cout << endl;
 
 			addrParent srcParent = findElm(LP, angkutan.kode);
-
 			if (srcParent != NULL)
 			{
 				system("clear");
+				cout << " [ NEW DATAS ] " << endl << endl;
 				cout << "> Plat Nomor: "; getline(cin, srcParent->info.kode);
 				cout << "> Nama Angkutan: "; getline(cin, srcParent->info.nama);
-
-				printInfo(LP);
-			}
+			} else cout << endl << "[-] Datas not found.." << endl;
 
 			cout << "[*] Update datas, again? [y/t]: "; cin >> repeat;
-		} while (repeat != 't');
+		} while (repeat != 't' && repeat != 'T');
 	} else if (x == "daerah") {
 		do {
 			system("clear");
 			cin.ignore();
+
+			cout << " [ UPDATE DATAS PARENT (Angkutan) ]" << endl << endl;
 			cout << "> Masukkan Nama Daerah: "; getline(cin, daerah);
-			cout << endl;
 
 			addrChild srcChild = findElm(LC, daerah);
-
 			if (srcChild != NULL)
 			{
 				system("clear");
+				cout << " [ NEW DATAS ] " << endl << endl;
 				cout << "> Nama Daerah: "; getline(cin, srcChild->info);
-
-				printInfo(LC);
-			}
+			} else cout << endl << "[-] Datas not found.." << endl;
 
 			cout << "[*] Update datas, again? [y/t]: "; cin >> repeat;
-		} while (repeat != 't');
+		} while (repeat != 't' && repeat != 'T');
 	}
 }
 
@@ -280,7 +289,7 @@ void showMenu(string x, listParent &LP, listChild &LC, listRel &LR) {
 			     << " [1] Add datas (Angkutan)" << endl
 			     << " [2] Add datas (Daerah)" << endl
 			     << " [3] Add new Relation" << endl
-			     << " [4] Back to dashboard menu" << endl << endl << endl
+			     << " [4] Back to dashboard menu" << endl << endl
 			     << " [*] Enter your choice and press <enter>: ";
 			cin >> choice;
 
@@ -302,7 +311,7 @@ void showMenu(string x, listParent &LP, listChild &LC, listRel &LR) {
 		system("clear");
 		do {
 			system("clear");
-			cout << "[ SHOW DATAS ]" << endl;
+			cout << " [ SHOW DATAS ]" << endl;
 			cout << endl
 			     << " [1] Show all datas" << endl
 			     << " [2] Show datas (Daerah) - (search by Angkutan)" << endl
@@ -335,7 +344,7 @@ void showMenu(string x, listParent &LP, listChild &LC, listRel &LR) {
 		system("clear");
 		do {
 			system("clear");
-			cout << "[ UPDATE DATAS ]" << endl;
+			cout << " [ UPDATE DATAS ]" << endl;
 			cout << endl
 			     << " [1] Update angkutan" << endl
 			     << " [2] Update daerah" << endl
@@ -357,10 +366,10 @@ void showMenu(string x, listParent &LP, listChild &LC, listRel &LR) {
 	} else if (x == "delete") {
 		do {
 			system("clear");
-			cout << "=== DELETE DATAS ===" << endl;
+			cout << " [ DELETE DATAS ] " << endl;
 			cout << endl
-			     << " [1] Delete angkutan" << endl
-			     << " [2] Delete daerah" << endl
+			     << " [1] Delete Angkutan" << endl
+			     << " [2] Delete Daerah" << endl
 			     << " [3] Back to dashboard menu" << endl << endl
 			     << " [*] Enter your choice and press <enter>: ";
 			cin >> choice;
