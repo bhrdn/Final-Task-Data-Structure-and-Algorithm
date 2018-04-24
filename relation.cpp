@@ -94,17 +94,82 @@ addrRel findElmChild(listRel L, addrChild P) {
     return NULL;
 }
 
-void deleteFirst(listRel &L, addrRel &R) {
-
-}
-
 /*
-void deleteRelation(listRel &L, addrParent P) {
-    addrRel Q = L.first;
-    while (Q != L.first) {
-        if (Q->parent->info == P->info) {
-            if (Q)
+    void deleteFirst(listRel &L, addrRel &P) {
+        P = L.first;
+        if (P != NULL){
+            if (P->next == L.frist) {
+                next(P) = NULL;
+                L.first = NULL;
+            }
+            else {
+                addrRel Q = L.first;
+                while (Q->next != L.first) {
+                    Q = Q->next;
+                }
+                L.first = P->next;
+                Q->next = P->next;
+                P->next = NULL;
+            }
+        }
+
+        deallocate(P);
+    }
+
+    void deleteLast(listRel &L, addrRel &P) {
+        P = L.first;
+        if (P != NULL) {
+            if (P->next = L.first) {
+                P->next = NULL;
+                L.first = NULL;
+            }
+            else {
+                addrRel Q = L.first;
+                while (Q->next->next != L.first) {
+                    Q = Q->next;
+                }
+                P = Q->next;
+                Q->next = P->next;
+                P->next = NULL;
+            }
+        }
+
+        deallocate(P);
+    }
+
+    void deleteAfter(listRel &L, addrRel Prec, addrRel &P) {
+        if (L.first != NULL && Prec != NULL) {
+            if(Prec->next == L.first){
+                deleteFirst(L, P);
+            }
+            else {
+                P = Prec->next;
+                Prec->next = P->next;
+                P->next = NULL;
+                deallocate(P);
+            }
         }
     }
-}
+
+    void deleteRelation(listRel &L, addrParent P, addrRel R){
+        R = L.first;
+        while (//kondisi sampai nextnya first && R->next->parent != P) {
+            
+            // Jika parentnya sesuai jalanin delete
+            
+            if (R->parent == P) {
+            if (R == L.first) {
+                deleteFirst(L, P);
+            }
+            else if (R->next == L.first) {
+                deleteLast(L, P);
+            }
+            else
+                //delete yg tengah
+            }
+            
+            R = R->next;
+        }
+        
+    }
 */
