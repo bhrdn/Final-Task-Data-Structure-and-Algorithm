@@ -61,7 +61,7 @@ void addDatas(string x, listParent &LP, listChild &LC, listRel &LR) {
 			cout << "[*] Datas Parent (Angkutan)" << endl;
 			printInfo(LP);
 			cout << endl;
-			
+
 			cout << "[*] Datas Child (Daerah)" << endl;
 			printInfo(LC);
 			cout << endl;
@@ -110,20 +110,26 @@ void showDatas(string x, listParent &LP, listChild &LC, listRel &LR) {
 		cout << " [ SHOW DATAS PARENT (Angkutan) - search by child (Daerah)]" << endl;
 		cout << "> Nama Daerah: "; getline(cin, daerah);
 
-		if (findElm(LC, daerah) == NULL)
+		addrChild srcChild = findElm(LC, daerah);
+		if (srcChild == NULL)
 		{
 			cout << endl << "[-] Datas not found.." << endl;
 		} else {
 			addrRel P = LR.first;
-			if (P->next == LR.first) {
+			if (P == LR.first) {
 				cout << "-> " << (P->parent)->info.kode << " | " << (P->parent)->info.nama << endl;
 			} else {
-				while (P != LR.first) {
-					if ((P->child)->info == daerah)
+				while (P->next != LR.first) {
+					if (P->child == srcChild)
 					{
 						cout << "-> " << (P->parent)->info.kode << " " << (P->parent)->info.nama << endl;
 					}
 					P = P->next;
+				}
+
+				if (P->child == srcChild)
+				{
+					cout << "-> " << (P->parent)->info.kode << " " << (P->parent)->info.nama << endl;
 				}
 			}
 		}
@@ -136,20 +142,26 @@ void showDatas(string x, listParent &LP, listChild &LC, listRel &LR) {
 		cout << " [ SHOW DATAS CHILD (Daerah) - search by parent (Angkutan)]" << endl;
 		cout << "> Kode Angkutan: "; getline(cin, angkutan.kode);
 
-		if (findElm(LP, angkutan.kode) == NULL)
+		addrParent srcParent = findElm(LP, angkutan.kode);
+		if (srcParent == NULL)
 		{
 			cout << endl << "[-] Datas not found.." << endl;
 		} else {
 			addrRel P = LR.first;
-			if (P->next == LR.first) {
+			if (P == LR.first) {
 				cout << "-> " << (P->child)->info << endl;
 			} else {
-				while (P != LR.first) {
-					if ((P->parent)->info.kode == angkutan.kode)
+				while (P->next != LR.first) {
+					if (P->parent == srcParent)
 					{
 						cout << "-> " << (P->child)->info << endl;
 					}
 					P = P->next;
+				}
+
+				if (P->parent == srcParent)
+				{
+					cout << "-> " << (P->child)->info << endl;
 				}
 			}
 		}
@@ -183,12 +195,12 @@ void showDatas(string x, listParent &LP, listChild &LC, listRel &LR) {
 			} (Q->child != C) ? : i++;
 
 			if (i == max) {
-				cout << "[*] Easiest: " << C->info << endl;
+				cout << endl << "[*] Easiest: " << C->info << endl;
 			}
 
 			if (i == min)
 			{
-				cout << "[*] Difficult: " << C->info << endl;
+				cout << endl << "[*] Difficult: " << C->info << endl;
 			}
 
 			C = C->next;

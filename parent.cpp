@@ -121,7 +121,7 @@ addrParent findElm(listParent L, string x) {
         } else {
             while ((Q != NULL) && (Q->info.kode != x)) {
                 Q = Q->next;
-            };
+            }
             (Q == L.first) ? P = NULL : P = Q;
         }
     }
