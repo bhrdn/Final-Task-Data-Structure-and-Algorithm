@@ -93,3 +93,18 @@ addrRel findElmChild(listRel L, addrChild P) {
     }
     return NULL;
 }
+
+void deleteFirst(listRel &L, addrRel &R) {
+
+}
+
+/*
+void deleteRelation(listRel &L, addrParent P) {
+    addrRel Q = L.first;
+    while (Q != L.first) {
+        if (Q->parent->info == P->info) {
+            if (Q)
+        }
+    }
+}
+*/
