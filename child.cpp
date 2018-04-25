@@ -53,10 +53,6 @@ void insertAfter(listChild &L, addrChild Prec, addrChild P) {
             Prec->next = P;
         }
     }
-    (Prec->next)->prev = P;
-    P->next = Prec->next;
-    P->prev = Prec;
-    Prec->next = P;
 }
 
 void insertSort(listChild &L, addrChild P) {
