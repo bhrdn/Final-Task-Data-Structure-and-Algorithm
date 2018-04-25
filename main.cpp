@@ -14,7 +14,7 @@ int main(int argc, char const *argv[])
 	do
 	{
 		system("clear");
-		printBanner();
+		//printBanner();
 		cout << endl
 			<< " [1] Create" << endl
 			<< " [2] Read" << endl
