@@ -44,10 +44,10 @@ void addDatas(string x, listParent &LP, listChild &LC, listRel &LR) {
 			cout << "[ ADD DATAS (Daerah)]" << endl;
 			cout << "> Nama Daerah: "; getline(cin, daerah);
 
-			if (findElm(LC, daerah) == false)
+			addrChild srcDaerah = findElm(LC, daerah);
+			if (srcDaerah == false)
 			{
-				addrChild P = allocate(daerah);
-				insertLast(LC, P);
+				insertSort(LC, allocate(daerah));
 			} else cout << endl << "[-] Duplicate datas.." << endl;
 
 			cout << endl << "[*] Add datas, again? [y/t]: "; cin >> repeat;
@@ -251,33 +251,9 @@ void deleteDatas(string x, listParent &LP, listChild &LC, listRel &LR) {
 		if (srcAngkutan != NULL)
 		{
 			addrRel P = LR.first;
-
 			if (P != NULL) {
-                if (P->next == LR.first && P->parent == srcAngkutan) {
-                    LR.first = NULL;
-                } else {
-                    addrRel R;
-                    while (P->next != LR.first && P->parent != srcAngkutan) {
-                        R = P;
-                        P = P->next;
-                    }
-
-                    if ((LR.first)->parent == srcAngkutan) {
-                        while (R->next != LR.first) {
-                            R = R->next;
-                        }
-
-                        LR.first = P->next;
-                        R->next = LR.first;
-                        P->next = NULL;
-                    } else if (P->next == LR.first) {
-                        R->next = LR.first;
-                        P->next = NULL;
-                    } else {
-                        R->next = P->next;
-                        P->next = NULL;
-                    }
-                }
+				deleteRelation(LR, findParentRel(LR, srcAngkutan));
+				// deleteRelationParent(LR, srcAngkutan);
 			}
 
 			deleteParent(LP, srcAngkutan);
@@ -286,10 +262,40 @@ void deleteDatas(string x, listParent &LP, listChild &LC, listRel &LR) {
 		cout << "> Daerah: "; getline(cin, daerah);
 		addrChild srcDaerah = findElm(LC, daerah);
 
-		if (srcDaerah != NULL)
-		{
+		// if (srcDaerah != NULL)
+		// {
+		// 	addrRel P = LR.first;
 
-		}
+		// 	if (P != NULL) {
+		// 		if (P->next == LR.first && P->parent == srcAngkutan) {
+		// 			LR.first = NULL;
+		// 		} else {
+		// 			addrRel R;
+		// 			while (P->next != LR.first && P->parent != srcAngkutan) {
+		// 				R = P;
+		// 				P = P->next;
+		// 			}
+
+		// 			if ((LR.first)->parent == srcAngkutan) {
+		// 				while (R->next != LR.first) {
+		// 					R = R->next;
+		// 				}
+
+		// 				LR.first = P->next;
+		// 				R->next = LR.first;
+		// 				P->next = NULL;
+		// 			} else if (P->next == LR.first) {
+		// 				R->next = LR.first;
+		// 				P->next = NULL;
+		// 			} else {
+		// 				R->next = P->next;
+		// 				P->next = NULL;
+		// 			}
+		// 		}
+		// 	}
+
+		// 	deleteChild(LP, srcAngkutan);
+		// }
 	}
 }
 
@@ -309,15 +315,15 @@ void showMenu(string x, listParent &LP, listChild &LC, listRel &LR) {
 
 			switch (choice) {
 			case 1:
-				addDatas("angkutan", LP, LC, LR);
+				addDatas("angkutan", LP, LC, LR); // insert sort
 				break;
 
 			case 2:
-				addDatas("daerah", LP, LC, LR);
+				addDatas("daerah", LP, LC, LR); // insert last
 				break;
 
 			case 3:
-				addDatas("relasi", LP, LC, LR);
+				addDatas("relasi", LP, LC, LR); // insert first
 				break;
 			}
 		} while (choice != 4);

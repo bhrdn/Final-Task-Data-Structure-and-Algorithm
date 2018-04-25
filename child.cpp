@@ -21,10 +21,9 @@ void insertFirst(listChild &L, addrChild P) {
     if (L.first == NULL && L.last == NULL) {
         L.first = P;
         L.last = P;
-    }
-    else {
+    } else {
         P->next = L.first;
-        L.first->prev = P;
+        (L.first)->prev = P;
         L.first = P;
     }
 }
@@ -33,19 +32,48 @@ void insertLast(listChild &L, addrChild P) {
     if (L.first == NULL && L.last == NULL) {
         L.first = P;
         L.last = P;
-    }
-    else {
+        cin.ignore().get();
+    } else {
         P->prev = L.last;
         L.last->next = P;
         L.last = P;
-    };
+    }
 }
 
-void insertAfter(addrChild Prec, addrChild P) {
+void insertAfter(listChild &L, addrChild Prec, addrChild P) {
+    if (L.first != NULL)
+    {
+        if (Prec == L.last)
+        {
+            insertLast(L, P);
+        } else {
+            (Prec->next)->prev = P;
+            P->next = Prec->next;
+            P->prev = Prec;
+            Prec->next = P;
+        }
+    }
     (Prec->next)->prev = P;
     P->next = Prec->next;
     P->prev = Prec;
     Prec->next = P;
+}
+
+void insertSort(listChild &L, addrChild P) {
+    if (L.first == NULL) {
+        insertFirst(L, P);
+    } 
+    else {
+        if (P->info <= (L.first)->info) {
+            insertFirst(L, P);
+        } else if (P->info > (L.last)->info) {
+            insertLast(L, P);
+        } else {
+            addrChild Q = L.first;
+            while (P->info > (Q->next)->info) Q = Q->next;
+            insertAfter(L, Q, P);
+        }
+    }
 }
 
 void deleteFirst(listChild &L) {

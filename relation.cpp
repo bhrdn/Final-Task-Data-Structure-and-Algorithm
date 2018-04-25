@@ -12,21 +12,6 @@ addrRel allocate(addrParent P, addrChild C) {
     return Q;
 }
 
-int totalChild(listRel LR, addrChild C) {
-    int i; // counter
-    addrRel Q = LR.first;
-    while (Q != LR.first) {
-        if (Q->child == C)
-        {
-            cout << Q->child->info << endl;
-            i++;
-        }
-        Q = Q->next;
-    }
-
-    return i;
-}
-
 void insertFirst(listRel &L, addrRel P) {
     if (L.first == NULL) {
         L.first = P;
@@ -70,106 +55,98 @@ void printInfo(listRel L) {
     } else cout << "[-] Datas not found.." << endl;
 }
 
-addrRel findElmParent(listRel L, addrParent P) {
-    addrRel Q = L.first;
-    while (Q != L.first) {
-        if (Q->parent == P) {
-            return Q;
-            break;
+void deleteRelationParent(listRel &L, addrParent &Q) {
+    addrRel P = L.first;
+    if (P->next == L.first && P->parent == Q) {
+        L.first = NULL;
+    } else {
+        addrRel R;
+        while (P->next != L.first && P->parent != Q) {
+            R = P;
+            P = P->next;
         }
-        Q = Q->next;
-    }
-    return NULL;
-}
 
-addrRel findElmChild(listRel L, addrChild P) {
-    addrRel Q = L.first;
-    while (Q != L.first) {
-        if (Q->child == P) {
-            return Q;
-            break;
-        }
-        Q = Q->next;
-    }
-    return NULL;
-}
-
-/**
-void deleteFirst(listRel &L, addrRel P) {
-    P = L.first;
-    if (P != NULL){
-        if (P->next == L.first) {
-            next(P) = NULL;
-            L.first = NULL;
-        }
-        else {
-            addrRel Q = L.first;
-            while (Q->next != L.first) {
-                Q = Q->next;
+        if ((L.first)->parent == Q) {
+            while (R->next != L.first) {
+                R = R->next;
             }
+
             L.first = P->next;
-            Q->next = P->next;
+            R->next = L.first;
+            P->next = NULL;
+        } else if (P->next == L.first) {
+            R->next = L.first;
+            P->next = NULL;
+        } else {
+            R->next = P->next;
             P->next = NULL;
         }
     }
-
-    deallocate(P);
 }
 
-void deleteLast(listRel &L, addrRel &P) {
-    P = L.first;
-    if (P != NULL) {
-        if (P->next = L.first) {
-            P->next = NULL;
-            L.first = NULL;
+void deleteRelation(listRel &L, addrRel Q) {
+    addrRel P = L.first;
+    if (P->next == L.first && P == Q)
+    {
+        Q->next = NULL;
+        L.first = NULL;
+    } else {
+        addrRel R;
+        while (R->next != L.first && P != Q) {
+            R = P;
+            P = P->next;
         }
-        else {
-            addrRel Q = L.first;
-            while (Q->next->next != L.first) {
-                Q = Q->next;
+
+        if (L.first == Q)
+        {
+            while (R->next != L.first) {
+                R = R->next;
             }
-            P = Q->next;
-            Q->next = P->next;
+
+            L.first = P->next;
+            R->next = L.first;
+            P->next = NULL;
+        } else if (P->next == L.first)
+        {
+            R->next = L.first;
+            P->next = NULL;
+        } else {
+            R->next = P->next;
             P->next = NULL;
         }
     }
-
-    deallocate(P);
 }
 
-void deleteAfter(listRel &L, addrRel Prec, addrRel &P) {
-    if (L.first != NULL && Prec != NULL) {
-        if(Prec->next == L.first){
-            deleteFirst(L, P);
+addrRel findParentRel(listRel L, addrParent Q) {
+    addrRel P = L.first;
+    if (L.first != NULL)
+    {
+        while (P->next != L.first) {
+            if ((P->parent)->info.kode == Q->info.kode) {
+                return P;
+                break;
+            }
+            P = P->next;
         }
-        else {
-            P = Prec->next;
-            Prec->next = P->next;
-            P->next = NULL;
-            deallocate(P);
-        }
-    }
+
+        if ((P->parent)->info.kode == Q->info.kode) return P;
+        else return NULL;
+    } else return NULL;
 }
 
-void deleteRelation(listRel &L, addrParent P, addrRel R){
-    R = L.first;
-    while (//kondisi sampai nextnya first && R->next->parent != P) {
-
-        // Jika parentnya sesuai jalanin delete
-
-        if (R->parent == P) {
-        if (R == L.first) {
-            deleteFirst(L, P);
-        }
-        else if (R->next == L.first) {
-            deleteLast(L, P);
-        }
-        else
-            //delete yg tengah
+addrRel findChildRel(listRel &L, addrChild Q) {
+    addrRel P = L.first;
+    if (L.first != NULL)
+    {
+        while (P->next != L.first) {
+            if ((P->child)->info == Q->info) {
+                return P;
+                break;
+            }
+            P = P->next;
         }
 
-        R = R->next;
-    }
-
+        if ((P->child)->info == Q->info) return P;
+        else return NULL;
+    } else return NULL;
 }
-**/

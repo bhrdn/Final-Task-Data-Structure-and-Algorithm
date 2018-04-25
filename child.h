@@ -19,6 +19,7 @@ void createList(listChild &L);
 void insertFirst(listChild &L, addrChild P);
 void insertLast(listChild &L, addrChild P);
 void insertAfter(addrChild Prec, addrChild P);
+void insertSort(listChild &L, addrChild P);
 
 // DELETE
 void deleteFirst(listChild &L);

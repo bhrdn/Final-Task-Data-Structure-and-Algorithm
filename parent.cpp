@@ -44,48 +44,6 @@ void insertAfter(listParent &L, addrParent Prec, addrParent P) {
     Prec->next = P;
 }
 
-void insertSort(listParent &L, addrParent P) {
-    addrParent Q = L.first;
-    addrParent R = NULL;
-
-    if (Q == NULL) insertFirst(L, P);
-    else if (Q->next == NULL && P->info.nama < Q->info.nama)
-    {
-        if (P->info.nama < Q->info.nama) {
-            // insertAfter(L, Q, P);
-            cout << "1" << endl;
-        }
-        else {
-            // Q->next = P;
-            // P->next = NULL;
-            cout << "2" << endl;
-        }
-    }
-    else {
-        // while (Q->next != NULL && P->info.nama > Q->info.nama) {
-        //     R = Q;
-        //     Q = Q->next;
-        // }
-
-        cout << "#" << R->info.nama << endl;
-
-        // if (Q->info.nama < P->info.nama && Q->next == NULL)
-        // {
-        //     Q->next = P;
-        //     P = Q;
-        // } else if (P->info.nama <= Q->info.nama) {
-        //     if (Q == L.first)
-        //     {
-        //         P->next = L.first;
-        //         L.first = P;
-        //     } else {
-        //         R->next = P;
-        //         P->next = Q;
-        //     }
-        // }
-    }
-}
-
 void deleteFirst(listParent &L, addrParent &P) {
     if (L.first != NULL) {
         if ((L.first)->next == NULL) {

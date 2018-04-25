@@ -5,9 +5,10 @@
 ## Spesifikasi
 * **Judul:** Data Alat Transport
 * **Deskripsi:** Implementasikan multi linked-list yang memodelkan data angkutan dan data daerah beserta relasi keduanya. Suatu alat angkutan bisa digunakan untuk transportasi ke beberapa daerah, dan sebaliknya suatu daerah bisa di capai dengan menggunakan beberapa jenis alat angkutan.
+
 * **Fungsionalitas:** 
 	* [x] Penambahan data alat angkutan.
-	* [x] Penambahan data daerah.
+	* [ ] Penambahan data daerah.
 	* [x] Penentuan relasi alat angkutan dan daerah (dan sebalikknya).
 	* [x] Menghapus data alat angkutan tertentu.
 	* [ ] Manghapus data daerah tertentu.
