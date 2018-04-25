@@ -26,15 +26,13 @@ void insertFirst(listParent &L, addrParent P) {
 }
 
 void insertLast(listParent &L, addrParent P) {
-    if (L.first == NULL)
-    {
+    if (L.first == NULL) {
         insertFirst(L, P);
     } else {
         addrParent Q = L.first;
         while (Q->next != NULL) {
             Q = Q->next;
         }
-
         Q->next = P;
     }
 }
@@ -64,8 +62,7 @@ void deleteLast(listParent &L, addrParent &P) {
         if ((L.first)->next == NULL) {
             P = L.first;
             L.first = NULL;
-        }
-        else {
+        } else {
             addrParent Q = L.first;
             while ((Q->next)->next != NULL) {
                 Q = Q->next;
@@ -87,8 +84,7 @@ void deleteAfter(listParent &L, addrParent Prec, addrParent &P) {
 }
 
 void deleteParent(listParent &L, addrParent &P) {
-    if (L.first != P)
-    {
+    if (L.first != P) {
         addrParent X = L.first;
         while (X->next != NULL && X->next != P) {
             X = X->next;
@@ -96,7 +92,6 @@ void deleteParent(listParent &L, addrParent &P) {
 
         X->next = P->next;
         P->next = NULL;
-
         deallocate(P);
     } else deleteFirst(L, P);
 }
@@ -121,8 +116,7 @@ addrParent findElm(listParent L, string x) {
         } else {
             while ((Q != NULL) && (Q->info.kode != x)) {
                 Q = Q->next;
-            }
-            (Q == L.first) ? P = NULL : P = Q;
+            } (Q == L.first) ? P = NULL : P = Q;
         }
     }
     return P;

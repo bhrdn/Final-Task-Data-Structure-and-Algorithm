@@ -20,8 +20,7 @@ void printBanner() {
 }
 
 void addDatas(string x, listParent &LP, listChild &LC, listRel &LR) {
-	if (x == "angkutan")
-	{
+	if (x == "angkutan") {
 		do {
 			system("clear");
 			cin.ignore();
@@ -29,8 +28,7 @@ void addDatas(string x, listParent &LP, listChild &LC, listRel &LR) {
 			cout << "> Plat Nomor: "; getline(cin, angkutan.kode);
 			cout << "> Nama Angkutan: "; getline(cin, angkutan.nama);
 
-			if (findElm(LP, angkutan.kode) == false)
-			{
+			if (findElm(LP, angkutan.kode) == false) {
 				addrParent P = allocate(angkutan);
 				insertFirst(LP, P);
 			} else cout << endl << "[-] Duplicate datas.." << endl;
@@ -45,8 +43,7 @@ void addDatas(string x, listParent &LP, listChild &LC, listRel &LR) {
 			cout << "> Nama Daerah: "; getline(cin, daerah);
 
 			addrChild srcDaerah = findElm(LC, daerah);
-			if (srcDaerah == false)
-			{
+			if (srcDaerah == false) {
 				insertSort(LC, allocate(daerah));
 			} else cout << endl << "[-] Duplicate datas.." << endl;
 
@@ -72,14 +69,10 @@ void addDatas(string x, listParent &LP, listChild &LC, listRel &LR) {
 			addrParent srcParent = findElm(LP, angkutan.kode);
 			addrChild srcChild = findElm(LC, daerah);
 
-			if (srcParent != NULL && srcChild != NULL)
-			{
+			if (srcParent != NULL && srcChild != NULL) {
 				addrRel datas = allocate(srcParent, srcChild);
 				insertLast(LR, datas);
-			} else
-			{
-				cout << endl << "[-] Datas not found.." << endl;
-			}
+			} else cout << endl << "[-] Datas not found.." << endl;
 
 			cout << endl << "[*] Add datas, again? [y/t]: "; cin >> repeat;
 		} while (repeat != 't' && repeat != 'T');
@@ -92,7 +85,6 @@ void showDatas(string x, listParent &LP, listChild &LC, listRel &LR) {
 		cin.ignore();
 
 		cout << " [ SHOW ALL DATAS ] " << endl << endl;
-
 		cout << "[*] Data Angkutan" << endl;
 		printInfo(LP); cout << endl;
 
@@ -111,26 +103,22 @@ void showDatas(string x, listParent &LP, listChild &LC, listRel &LR) {
 		cout << "> Nama Daerah: "; getline(cin, daerah);
 
 		addrChild srcChild = findElm(LC, daerah);
-		if (srcChild == NULL)
-		{
-			cout << endl << "[-] Datas not found.." << endl;
-		} else if (LR.first != NULL) {
+		if (srcChild == NULL) cout << endl << "[-] Datas not found.." << endl;
+		else if (LR.first != NULL) {
 			addrRel P = LR.first;
 			while (P->next != LR.first) {
-				if (P->child == srcChild)
-				{
+				if (P->child == srcChild) {
 					cout << "-> " << (P->parent)->info.kode << " | " << (P->parent)->info.nama << endl;
 				}
 				P = P->next;
 			}
 
-			if (P->child == srcChild)
-			{
+			if (P->child == srcChild) {
 				cout << "-> " << (P->parent)->info.kode << " | " << (P->parent)->info.nama << endl;
 			}
 		}
-		cin.ignore().get();
 
+		cin.ignore().get();
 	} else if (x == "angkutan") {
 		system("clear");
 		cin.ignore();
@@ -139,32 +127,26 @@ void showDatas(string x, listParent &LP, listChild &LC, listRel &LR) {
 		cout << "> Kode Angkutan: "; getline(cin, angkutan.kode);
 
 		addrParent srcParent = findElm(LP, angkutan.kode);
-		if (srcParent == NULL)
-		{
-			cout << endl << "[-] Datas not found.." << endl;
-		} else if (LR.first != NULL) {
+		if (srcParent == NULL) cout << endl << "[-] Datas not found.." << endl;
+		else if (LR.first != NULL) {
 			addrRel P = LR.first;
 			while (P->next != LR.first) {
-				if (P->parent == srcParent)
-				{
+				if (P->parent == srcParent) {
 					cout << "-> " << (P->child)->info << endl;
 				}
 				P = P->next;
 			}
 
-			if (P->parent == srcParent)
-			{
+			if (P->parent == srcParent) {
 				cout << "-> " << (P->child)->info << endl;
 			}
 		}
-
 		cin.ignore().get();
 	} else if (x == "minmax") {
 		system("clear");
 		cin.ignore();
 
 		cout << " [ SHOW THE EASIEST AND MOST DIFFICULT DATAS CHILD (Daerah) ] " << endl;
-
 		addrChild C = LC.first; int max = 0, min = 1, i;
 		while (C != NULL) {
 			addrRel Q = LR.first; i = 0;
@@ -192,8 +174,7 @@ void showDatas(string x, listParent &LP, listChild &LC, listRel &LR) {
 			C = C->next;
 		}
 
-		if (MIN != MAX)
-		{
+		if (MIN != MAX) {
 			cout << "[*] Difficult: " << MIN << " | Easiest: " << MAX << endl;
 		}
 		cin.ignore().get();
@@ -210,8 +191,7 @@ void updateDatas(string x, listParent &LP, listChild &LC, listRel &LR) {
 			cout << "> Plat Nomor: "; getline(cin, angkutan.kode);
 
 			addrParent srcParent = findElm(LP, angkutan.kode);
-			if (srcParent != NULL)
-			{
+			if (srcParent != NULL) {
 				system("clear");
 				cout << " [ NEW DATAS ] " << endl << endl;
 				cout << "> Plat Nomor: "; getline(cin, srcParent->info.kode);
@@ -229,8 +209,7 @@ void updateDatas(string x, listParent &LP, listChild &LC, listRel &LR) {
 			cout << "> Masukkan Nama Daerah: "; getline(cin, daerah);
 
 			addrChild srcChild = findElm(LC, daerah);
-			if (srcChild != NULL)
-			{
+			if (srcChild != NULL) {
 				system("clear");
 				cout << " [ NEW DATAS ] " << endl << endl;
 				cout << "> Nama Daerah: "; getline(cin, srcChild->info);
@@ -248,21 +227,19 @@ void deleteDatas(string x, listParent &LP, listChild &LC, listRel &LR) {
 		cout << "> Plat Nomor: "; getline(cin, angkutan.kode);
 		addrParent srcAngkutan = findElm(LP, angkutan.kode);
 
-		if (srcAngkutan != NULL)
-		{
+		if (srcAngkutan != NULL) {
 			if (findParentRel(LR, srcAngkutan)) 
 				deleteRelationParent(LR, srcAngkutan);
-				deleteParent(LP, srcAngkutan);
+			deleteParent(LP, srcAngkutan);
 		}
 	} else if (x == "daerah") {
 		cout << "> Daerah: "; getline(cin, daerah);
 		addrChild srcDaerah = findElm(LC, daerah);
 
-		if (srcDaerah != NULL)
-		{
+		if (srcDaerah != NULL) {
 			if (findChildRel(LR, srcDaerah))
 				deleteRelationChild(LR, srcDaerah);
-				deleteChild(LC, srcDaerah);
+			deleteChild(LC, srcDaerah);
 		}
 	}
 }
@@ -282,17 +259,17 @@ void showMenu(string x, listParent &LP, listChild &LC, listRel &LR) {
 			cin >> choice;
 
 			switch (choice) {
-			case 1:
-				addDatas("angkutan", LP, LC, LR); // insert sort
-				break;
+				case 1:
+					addDatas("angkutan", LP, LC, LR); // insert sort
+					break;
 
-			case 2:
-				addDatas("daerah", LP, LC, LR); // insert last
-				break;
+				case 2:
+					addDatas("daerah", LP, LC, LR); // insert last
+					break;
 
-			case 3:
-				addDatas("relasi", LP, LC, LR); // insert first
-				break;
+				case 3:
+					addDatas("relasi", LP, LC, LR); // insert first
+					break;
 			}
 		} while (choice != 4);
 	} else if (x == "read") {
@@ -310,21 +287,21 @@ void showMenu(string x, listParent &LP, listChild &LC, listRel &LR) {
 			cin >> choice;
 
 			switch (choice) {
-			case 1:
-				showDatas("all", LP, LC, LR);
-				break;
+				case 1:
+					showDatas("all", LP, LC, LR);
+					break;
 
-			case 2:
-				showDatas("angkutan", LP, LC, LR);
-				break;
+				case 2:
+					showDatas("angkutan", LP, LC, LR);
+					break;
 
-			case 3:
-				showDatas("daerah", LP, LC, LR);
-				break;
+				case 3:
+					showDatas("daerah", LP, LC, LR);
+					break;
 
-			case 4:
-				showDatas("minmax", LP, LC, LR);
-				break;
+				case 4:
+					showDatas("minmax", LP, LC, LR);
+					break;
 			}
 		} while (choice != 5);
 
@@ -341,13 +318,13 @@ void showMenu(string x, listParent &LP, listChild &LC, listRel &LR) {
 			cin >> choice;
 
 			switch (choice) {
-			case 1:
-				updateDatas("angkutan", LP, LC, LR);
-				break;
+				case 1:
+					updateDatas("angkutan", LP, LC, LR);
+					break;
 
-			case 2:
-				updateDatas("daerah", LP, LC, LR);
-				break;
+				case 2:
+					updateDatas("daerah", LP, LC, LR);
+					break;
 			}
 		} while (choice != 3);
 
@@ -363,13 +340,13 @@ void showMenu(string x, listParent &LP, listChild &LC, listRel &LR) {
 			cin >> choice;
 
 			switch (choice) {
-			case 1:
-				deleteDatas("angkutan", LP, LC, LR);
-				break;
+				case 1:
+					deleteDatas("angkutan", LP, LC, LR);
+					break;
 
-			case 2:
-				deleteDatas("daerah", LP, LC, LR);
-				break;
+				case 2:
+					deleteDatas("daerah", LP, LC, LR);
+					break;
 			}
 		} while (choice != 3);
 	}

@@ -1,7 +1,6 @@
 #include "autoload.cpp"
 
-int main(int argc, char const *argv[])
-{
+int main(int argc, char const *argv[]) {
 	// List Parent & Child
 	listParent daftarAngkutan;
 	createList(daftarAngkutan);
@@ -11,8 +10,7 @@ int main(int argc, char const *argv[])
 	createList(Relation);
 
 	int choice;
-	do
-	{
+	do {
 		system("clear");
 		printBanner();
 		cout << endl
@@ -24,23 +22,22 @@ int main(int argc, char const *argv[])
 			<< " [*] Enter your choice and press <enter>: ";
 		cin >> choice;
 
-		switch (choice)
-		{
-		case 1:
-			showMenu("create", daftarAngkutan, daftarDaerah, Relation);
-			break;
+		switch (choice) {
+			case 1:
+				showMenu("create", daftarAngkutan, daftarDaerah, Relation);
+				break;
 
-		case 2:
-			showMenu("read", daftarAngkutan, daftarDaerah, Relation);
-			break;
+			case 2:
+				showMenu("read", daftarAngkutan, daftarDaerah, Relation);
+				break;
 
-		case 3:
-			showMenu("update", daftarAngkutan, daftarDaerah, Relation);
-			break;
+			case 3:
+				showMenu("update", daftarAngkutan, daftarDaerah, Relation);
+				break;
 
-		case 4:
-			showMenu("delete", daftarAngkutan, daftarDaerah, Relation);
-			break;
+			case 4:
+				showMenu("delete", daftarAngkutan, daftarDaerah, Relation);
+				break;
 		}
 	} while (choice != 5);
 

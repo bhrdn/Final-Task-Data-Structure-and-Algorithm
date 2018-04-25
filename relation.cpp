@@ -29,10 +29,8 @@ void insertFirst(listRel &L, addrRel P) {
 }
 
 void insertLast(listRel &L, addrRel P) {
-    if (L.first == NULL)
-    {
-        insertFirst(L, P);
-    } else {
+    if (L.first == NULL) insertFirst(L, P);
+    else {
         addrRel Q = L.first;
         while (Q->next != L.first) {
             Q = Q->next;
@@ -44,8 +42,7 @@ void insertLast(listRel &L, addrRel P) {
 }
 
 void printInfo(listRel L) {
-    if (L.first != NULL)
-    {
+    if (L.first != NULL) {
         addrRel P = L.first;
         while (P->next != L.first) {
             cout << "-> [ " << (P->parent)->info.kode << " | " << (P->parent)->info.nama << " ] <---> " << (P->child)->info << endl;
@@ -57,9 +54,8 @@ void printInfo(listRel L) {
 
 void deleteRelationParent(listRel &L, addrParent &Q) {
     addrRel P = L.first;
-    if (P->next == L.first && P->parent == Q) {
-        L.first = NULL;
-    } else {
+    if (P->next == L.first && P->parent == Q) L.first = NULL;
+    else {
         addrRel R;
         while (P->next != L.first && P->parent != Q) {
             R = P;
@@ -86,9 +82,8 @@ void deleteRelationParent(listRel &L, addrParent &Q) {
 
 void deleteRelationChild(listRel &L, addrChild &Q) {
     addrRel P = L.first;
-    if (P->next == L.first && P->child == Q) {
-        L.first = NULL;
-    } else {
+    if (P->next == L.first && P->child == Q) L.first = NULL;
+    else {
         addrRel R;
         while (P->next != L.first && P->child != Q) {
             R = P;
@@ -115,8 +110,7 @@ void deleteRelationChild(listRel &L, addrChild &Q) {
 
 addrRel findParentRel(listRel L, addrParent Q) {
     addrRel P = L.first;
-    if (L.first != NULL)
-    {
+    if (L.first != NULL) {
         while (P->next != L.first) {
             if ((P->parent)->info.kode == Q->info.kode) {
                 return P;
@@ -132,8 +126,7 @@ addrRel findParentRel(listRel L, addrParent Q) {
 
 addrRel findChildRel(listRel L, addrChild Q) {
     addrRel P = L.first;
-    if (L.first != NULL)
-    {
+    if (L.first != NULL) {
         while (P->next != L.first) {
             if ((P->child)->info == Q->info) {
                 return P;
