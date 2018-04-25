@@ -192,8 +192,6 @@ void showDatas(string x, listParent &LP, listChild &LC, listRel &LR) {
 			C = C->next;
 		}
 
-		// if (MAX- != MIN->info) cout << "[*] Difficult: " << MAX->info << " | Easiest: " << MIN->info << endl;
-		// else cout << "[-] MIN == MAX" << endl;
 		if (MIN != MAX)
 		{
 			cout << "[*] Difficult: " << MAX << " | Easiest: " << MIN << endl;
@@ -252,34 +250,34 @@ void deleteDatas(string x, listParent &LP, listChild &LC, listRel &LR) {
 
 		if (srcAngkutan != NULL)
 		{
-			addrRel Q = LR.first;
-			if (Q->next == LR.first && (Q->next)->parent == srcAngkutan)
-			{
-				Q->next = NULL;
-				LR.first = NULL;
-			} else {
-				addrRel P;
-				while (Q->next != LR.first && (Q->next)->parent != srcAngkutan) {
-					P = Q;
-					Q = Q->next;
-				}
+			addrRel P = LR.first;
 
-				if (srcAngkutan == (LR.first)->parent)
-				{
-					while (P->next != LR.first) {
-						P = P->next;
-					}
+			if (P != NULL) {
+                if (P->next == LR.first && P->parent == srcAngkutan) {
+                    LR.first = NULL;
+                } else {
+                    addrRel R;
+                    while (P->next != LR.first && P->parent != srcAngkutan) {
+                        R = P;
+                        P = P->next;
+                    }
 
-					LR.first = Q->next;
-					P->next = LR.first;
-					Q->next = NULL;
-				} else if (Q->next == LR.first) {
-					P->next = LR.first;
-					Q->next = NULL;
-				} else {
-					P->next = Q->next;
-					Q->next = NULL;
-				}
+                    if ((LR.first)->parent == srcAngkutan) {
+                        while (R->next != LR.first) {
+                            R = R->next;
+                        }
+
+                        LR.first = P->next;
+                        R->next = LR.first;
+                        P->next = NULL;
+                    } else if (P->next == LR.first) {
+                        R->next = LR.first;
+                        P->next = NULL;
+                    } else {
+                        R->next = P->next;
+                        P->next = NULL;
+                    }
+                }
 			}
 
 			deleteParent(LP, srcAngkutan);
@@ -290,16 +288,7 @@ void deleteDatas(string x, listParent &LP, listChild &LC, listRel &LR) {
 
 		if (srcDaerah != NULL)
 		{
-			addrRel srcRelation = findElmChild(LR, srcDaerah);
-			if (srcRelation != NULL)
-			{
-				cout << "here" << endl;
-				cin.ignore().get();
-				// deleteRelation
-				// deleteChild
-			} else {
-				// deleteChild
-			}
+
 		}
 	}
 }

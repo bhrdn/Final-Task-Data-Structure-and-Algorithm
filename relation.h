@@ -14,7 +14,7 @@ void createList(listRel &L);
 void insertFirst(listRel &L, addrRel P);
 void insertLast(listRel &L, addrRel P);
 void insertAfter(addrRel Prec, addrRel P);
-void deleteFirst(listRel &L, addrRel &P);
+void deleteFirst(listRel &L, addrRel P);
 void deleteLast(listRel &L, addrRel &P);
 void deleteAfter(addrRel Prec, addrRel &P);
 
