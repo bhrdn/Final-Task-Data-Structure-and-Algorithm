@@ -178,7 +178,7 @@ void showDatas(string x, listParent &LP, listChild &LC, listRel &LR) {
 			C = C->next;
 		}
 
-		C = LC.first;
+		C = LC.first; string MIN, MAX;
 		while (C != NULL) {
 			addrRel Q = LR.first; i = 0;
 			while (Q->next != LR.first) {
@@ -186,18 +186,18 @@ void showDatas(string x, listParent &LP, listChild &LC, listRel &LR) {
 				Q = Q->next;
 			} (Q->child != C) ? : i++;
 
-			if (i == max) {
-				cout << endl << "[*] Easiest: " << C->info << endl;
-			}
-
-			if (i == min)
-			{
-				cout << endl << "[*] Difficult: " << C->info << endl;
-			}
+			if (i == max) MAX = C->info;
+			if (i == min) MIN = C->info;
 
 			C = C->next;
 		}
 
+		// if (MAX- != MIN->info) cout << "[*] Difficult: " << MAX->info << " | Easiest: " << MIN->info << endl;
+		// else cout << "[-] MIN == MAX" << endl;
+		if (MIN != MAX)
+		{
+			cout << "[*] Difficult: " << MAX << " | Easiest: " << MIN << endl;
+		}
 		cin.ignore().get();
 	}
 }
