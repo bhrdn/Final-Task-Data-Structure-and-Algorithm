@@ -194,7 +194,7 @@ void showDatas(string x, listParent &LP, listChild &LC, listRel &LR) {
 
 		if (MIN != MAX)
 		{
-			cout << "[*] Difficult: " << MAX << " | Easiest: " << MIN << endl;
+			cout << "[*] Difficult: " << MIN << " | Easiest: " << MAX << endl;
 		}
 		cin.ignore().get();
 	}
