@@ -18,3 +18,21 @@
 	* [x] Menampilkan data daerah yang paling mudah dan yang paling sulit sarana transportasinya.
 * **Model:** Multi-Linked List M to N
 ![01](https://user-images.githubusercontent.com/13241336/36650941-b240fd3c-1ad8-11e8-98ac-3b67ff175467.png)
+
+## Configuration for sublime-build
+```json
+{
+	"shell_cmd": "g++ \"${file}\" -std=c++11 -o \"${file_path}/${file_base_name}\"",
+	"file_regex": "^(..[^:]*):([0-9]+):?([0-9]+)?:? (.*)$",
+	"working_dir": "${file_path}",
+	"selector": "source.c, source.c++",
+
+	"variants":
+	[
+		{
+			"name": "Run",
+			"shell_cmd": "g++ \"${file}\" -std=c++11 -o \"${file_path}/${file_base_name}\" && \"${file_path}/${file_base_name}\""
+		}
+	]
+}
+```
