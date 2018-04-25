@@ -1,23 +1,23 @@
 #include "menu.h"
 
-// void printBanner() {
-// 	cout << R"(
-//   ==============================================
-//  | FINAL TASK DATA STRUCTURE AND ALGORITHM 2018 |
-//   ==============================================
+void printBanner() {
+	cout << R"(
+  ==============================================
+ | FINAL TASK DATA STRUCTURE AND ALGORITHM 2018 |
+  ==============================================
 
-//  ---------------+---------------
-//            ___ /^^[___              _
-//           /|^+----+   |#___________//
-//         ( -+ |____|    ______-----+/
-//          ==_________--'            \
-//            ~_|___|__
+ ---------------+---------------
+           ___ /^^[___              _
+          /|^+----+   |#___________//
+        ( -+ |____|    ______-----+/
+         ==_________--'            \
+           ~_|___|__
 
-//  [Data Alat Transport]
-//  - Habib Bahruddin (1301174412)
-//  - Husna Assabiila Yassarah (1301174079)
-// 	)";
-// }
+ [Data Alat Transport]
+ - Habib Bahruddin (1301174412)
+ - Husna Assabiila Yassarah (1301174079)
+	)";
+}
 
 void addDatas(string x, listParent &LP, listChild &LC, listRel &LR) {
 	if (x == "angkutan")
