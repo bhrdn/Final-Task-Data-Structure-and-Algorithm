@@ -2,6 +2,9 @@
 * Habib Bahruddin (1301174412)
 * Husna Assabiila Yassarah (1301174079)
 
+## Screenshot and demo
+[![asciicast](https://asciinema.org/a/6K7VbvraXNLQGa4LTB6zU407s.png)](https://asciinema.org/a/6K7VbvraXNLQGa4LTB6zU407s)
+
 ## Spesifikasi
 * **Judul:** Data Alat Transport
 * **Deskripsi:** Implementasikan multi linked-list yang memodelkan data angkutan dan data daerah beserta relasi keduanya. Suatu alat angkutan bisa digunakan untuk transportasi ke beberapa daerah, dan sebaliknya suatu daerah bisa di capai dengan menggunakan beberapa jenis alat angkutan.
