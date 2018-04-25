@@ -56,7 +56,12 @@ void insertAfter(listChild &L, addrChild Prec, addrChild P) {
 }
 
 void insertSort(listChild &L, addrChild P) {
-   
+   addrChild Q = L.first;
+
+   if (L.first != NULL)
+   {
+        
+   }
 }
 
 void deleteFirst(listChild &L) {
