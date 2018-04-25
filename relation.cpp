@@ -84,21 +84,18 @@ void deleteRelationParent(listRel &L, addrParent &Q) {
     }
 }
 
-void deleteRelation(listRel &L, addrRel Q) {
+void deleteRelationChild(listRel &L, addrChild &Q) {
     addrRel P = L.first;
-    if (P->next == L.first && P == Q)
-    {
-        Q->next = NULL;
+    if (P->next == L.first && P->child == Q) {
         L.first = NULL;
     } else {
         addrRel R;
-        while (R->next != L.first && P != Q) {
+        while (P->next != L.first && P->child != Q) {
             R = P;
             P = P->next;
         }
 
-        if (L.first == Q)
-        {
+        if ((L.first)->child == Q) {
             while (R->next != L.first) {
                 R = R->next;
             }
@@ -106,8 +103,7 @@ void deleteRelation(listRel &L, addrRel Q) {
             L.first = P->next;
             R->next = L.first;
             P->next = NULL;
-        } else if (P->next == L.first)
-        {
+        } else if (P->next == L.first) {
             R->next = L.first;
             P->next = NULL;
         } else {
@@ -134,7 +130,7 @@ addrRel findParentRel(listRel L, addrParent Q) {
     } else return NULL;
 }
 
-addrRel findChildRel(listRel &L, addrChild Q) {
+addrRel findChildRel(listRel L, addrChild Q) {
     addrRel P = L.first;
     if (L.first != NULL)
     {

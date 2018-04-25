@@ -62,7 +62,7 @@ void insertAfter(listChild &L, addrChild Prec, addrChild P) {
 void insertSort(listChild &L, addrChild P) {
     if (L.first == NULL) {
         insertFirst(L, P);
-    } 
+    }
     else {
         if (P->info <= (L.first)->info) {
             insertFirst(L, P);
@@ -78,7 +78,7 @@ void insertSort(listChild &L, addrChild P) {
 
 void deleteFirst(listChild &L) {
     if (L.first == NULL && L.last == NULL) {
-        cout << "Empty" << endl;
+        cout << "[-] Datas not found.." << endl;
     } else if (L.first == L.last) {
         L.first = NULL;
         L.last = NULL;
@@ -109,6 +109,36 @@ void deleteAfter(listChild &L, addrChild Prec, addrChild &P) {
     (P->next)->prev = Prec;
     P->next = NULL;
     P->prev = NULL;
+    deallocate(P);
+}
+
+void deleteChild(listChild &L, addrChild &P) {
+    addrChild Q = L.first;
+
+    if (P == L.first && P == L.last) {
+        L.first = NULL;
+        L.last = NULL;
+    } else if (P == L.first) {
+        L.first = P->next;
+        P->next = NULL;
+        (L.first)->prev = NULL;
+    } else if (P == L.last) {
+        while (Q->next != P) {
+            Q = Q->next;
+        }
+        L.last = Q;
+        Q->next = NULL;
+        P->prev = NULL;
+    } else {
+        while (Q->next != P) {
+            Q = Q->next;
+        }
+        Q->next = P->next;
+        (P->next)->prev = Q;
+        P->prev = NULL;
+        P->next = NULL;
+    }
+
     deallocate(P);
 }
 

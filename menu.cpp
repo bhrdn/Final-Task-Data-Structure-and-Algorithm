@@ -250,52 +250,20 @@ void deleteDatas(string x, listParent &LP, listChild &LC, listRel &LR) {
 
 		if (srcAngkutan != NULL)
 		{
-			addrRel P = LR.first;
-			if (P != NULL) {
-				deleteRelation(LR, findParentRel(LR, srcAngkutan));
-				// deleteRelationParent(LR, srcAngkutan);
-			}
-
-			deleteParent(LP, srcAngkutan);
+			if (findParentRel(LR, srcAngkutan)) 
+				deleteRelationParent(LR, srcAngkutan);
+				deleteParent(LP, srcAngkutan);
 		}
 	} else if (x == "daerah") {
 		cout << "> Daerah: "; getline(cin, daerah);
 		addrChild srcDaerah = findElm(LC, daerah);
 
-		// if (srcDaerah != NULL)
-		// {
-		// 	addrRel P = LR.first;
-
-		// 	if (P != NULL) {
-		// 		if (P->next == LR.first && P->parent == srcAngkutan) {
-		// 			LR.first = NULL;
-		// 		} else {
-		// 			addrRel R;
-		// 			while (P->next != LR.first && P->parent != srcAngkutan) {
-		// 				R = P;
-		// 				P = P->next;
-		// 			}
-
-		// 			if ((LR.first)->parent == srcAngkutan) {
-		// 				while (R->next != LR.first) {
-		// 					R = R->next;
-		// 				}
-
-		// 				LR.first = P->next;
-		// 				R->next = LR.first;
-		// 				P->next = NULL;
-		// 			} else if (P->next == LR.first) {
-		// 				R->next = LR.first;
-		// 				P->next = NULL;
-		// 			} else {
-		// 				R->next = P->next;
-		// 				P->next = NULL;
-		// 			}
-		// 		}
-		// 	}
-
-		// 	deleteChild(LP, srcAngkutan);
-		// }
+		if (srcDaerah != NULL)
+		{
+			if (findChildRel(LR, srcDaerah))
+				deleteRelationChild(LR, srcDaerah);
+				deleteChild(LC, srcDaerah);
+		}
 	}
 }
 

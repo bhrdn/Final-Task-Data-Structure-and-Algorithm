@@ -25,6 +25,7 @@ void insertSort(listChild &L, addrChild P);
 void deleteFirst(listChild &L);
 void deleteLast(listChild &L);
 void deleteAfter(listChild &L, addrChild Prec, addrChild &P);
+void deleteChild(listChild &L, addrChild &P);
 
 void printInfo(listChild L);
 addrChild findElm(listChild L, string x);
