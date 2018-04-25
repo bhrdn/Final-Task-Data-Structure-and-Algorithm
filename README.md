@@ -9,7 +9,7 @@
 	* [x] Penambahan data alat angkutan.
 	* [x] Penambahan data daerah.
 	* [x] Penentuan relasi alat angkutan dan daerah (dan sebalikknya).
-	* [ ] Menghapus data alat angkutan tertentu.
+	* [x] Menghapus data alat angkutan tertentu.
 	* [ ] Manghapus data daerah tertentu.
 	* [x] Menampilkan data keseluruhan alat angkutan beserta daerah yang bisa dikujunginya.
 	* [x] Menampilkan data daerah yang bisa dilaui oleh alat angkutan tertentu.
